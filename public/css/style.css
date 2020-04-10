@@ -5,6 +5,10 @@
 {
     font-family: 'Open Sans', sans-serif;
 }
+.test
+{
+    font: outline;
+}
 body
 {
     background-image: url('../images/img-bg.jpg') ;
