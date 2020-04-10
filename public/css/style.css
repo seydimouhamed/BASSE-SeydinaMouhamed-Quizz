@@ -1,5 +1,10 @@
-
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap'); */
 /* RGB(132, 94, 247) for background opacity*/
+
+*
+{
+    font-family: 'Open Sans', sans-serif;
+}
 body
 {
     background-image: url('../images/img-bg.jpg') ;
