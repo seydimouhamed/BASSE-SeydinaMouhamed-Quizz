@@ -6,7 +6,12 @@
         <link rel="stylesheet" type="text/css" href="public/css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     </head>
-        
+        <script type="text/javascript">
+            function connexion_validate()
+            {
+                var login=document.getElementById("couleur").value;
+            }
+        </script>
     <body>
         <div class="transparent">
         <header>
@@ -14,6 +19,17 @@
                 <div class="logo"><img class="img_h100" alt='logo' src="public/images/logo-QuizzSA.png"></div>
                 <div class="titre">Le plaisir de jouer</div>
             </nav>
+            <?php
+                if(!empty($msg))
+                {
+            ?>
+                    <div class="alert <?= $msg['type']?>">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong><?= $msg['type']?></strong> <?= $msg['text']?>
+                    </div>
+            <?php 
+                }
+             ?>
         </header>
         <?= $content ?>
         <div>

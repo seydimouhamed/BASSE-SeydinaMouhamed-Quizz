@@ -15,6 +15,34 @@ body
     background-size: cover;
     margin: 0 auto;
 }
+/*ALERT style */
+.alert
+{
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    width: 40%;
+    position: absolute;
+    right: 0px;
+}
+
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+/*ALERT style */
+ 
 .transparent
 {
     width: 100%;
@@ -35,6 +63,7 @@ nav
     text-align: center;
     color: white;
     line-height: 2.5em;
+    font-size: 22px;
 }
 .img_h100
 {
@@ -80,12 +109,13 @@ nav
 
 .iptxt
 {
-    width: 100%;
+    width: 97%;
     height: 50px;
     border-radius: 0%;
     background-size: 15px 15px;
     background-repeat: no-repeat;
     background-position: 97%;
+    padding-left: 3%;
     border: 1px solid #ced4da;
     border-radius: 3px;
     background-color: #eceff4;
@@ -103,11 +133,12 @@ nav
 }
 .ipbtn
 {
-    width: 100px;
-    height: 40px;
+    width: 120px;
+    height: 50px;
     border: none;
     color:white;
     border-radius: 5px;
+    font-size: 18px;
     background-color:#3bc9db;
 }
 a
