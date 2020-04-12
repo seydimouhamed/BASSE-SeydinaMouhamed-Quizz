@@ -15,6 +15,23 @@ if ( isset($_GET['origin']))
             login();
         }
     }
+    elseif($o=='deconnexion')
+    {
+        $_SESSION=array();
+        header('Location:index.php');
+    }
+    else
+    {
+        if(empty($_SESSION))
+        {
+            header('Location:index.php');
+        }
+        else
+        {
+            echo " redirecte page";
+        }
+    }
+
 }
 else 
 {

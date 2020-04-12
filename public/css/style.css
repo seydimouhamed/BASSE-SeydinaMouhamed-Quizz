@@ -92,12 +92,6 @@ nav
     font-size: 20px;
 }
 .labhead{margin-left: 5%;}
-.box
-{
-    width: 50%; 
-    margin-left: 25%;
-    background-color: #f8f9fa;
-}
 
 .div_input
 {
@@ -145,4 +139,80 @@ a
 {
     color: lightslategray;
     text-decoration: none;
+}
+
+
+h1,h2,h3
+{
+    text-align:center;
+}
+p
+{
+    line-height: 35px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.head_box
+{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color:#3bc9db;
+    color: white;
+    line-height: 3.5em;
+}
+.labhead{margin-left: 5%;}
+.box
+{
+    width: 94%; 
+    margin-left: 3%;
+    background-color: #f8f9fa;
+}
+
+.box.w50
+{
+    width: 50%; 
+    margin-left: 25%;
+}
+
+.pos_abs
+{
+    position: absolute;
+   right: 5%;
+   margin-top: -6%;
+    background-color: #00ffff;
+}
+
+
+
+.div_avatar
+{
+    position: absolute;
+    width: 60px;
+    float: left;
+    height: 60px;
+    margin-left: 1px;
+    margin-top: 1px; 
+}
+
+.w_70_h_70
+{
+    width: 84%;
+    height: 84%;
+    margin-top: 8%;
+    margin-left: 8%;
+}
+.img_avatar
+{
+    border-radius: 50%;
+}
+.name_user
+{
+    position: absolute;
+    margin-top: 35px;  
+    margin-left: 5px;
+    font-size: 10px;
+    font-weight: bold;
 }

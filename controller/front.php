@@ -19,14 +19,20 @@
 			}
 			else
 			{
-				$usrInfo = getUserByUserName($login);
-				if($usrInfo['type']=='admin')
+				$userInfo = getUserByUserName($login);
+				$_SESSION['userInfo']=$userInfo;
+				$_SESSION['auth']=true;
+				$_SESSION['auth_type'] = $userInfo['type'];
+				if($userInfo['type']=='admin')
 				{
-					echo " un admin s'est connecté";
+					$subtitle="<br>Créer et paramétrer vos quizz";
+					require("view/admin/home.php");
 				}
 				else
 				{
-					echo " un joueur s'est connecté ";
+					$subtitle="Bienvenue sur la plateforme de jeu de quizz<br/>
+					Jouer et tester votre niveau de culture général";
+					require("view/player/play.php");
 				}
 			}
 		}
