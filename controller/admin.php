@@ -1,21 +1,10 @@
 <?php
- require('model/questions.php');
-  // require('model/acompte.php');
-		function listquestion()
+		function adminPage($page="joueurs")
 		{
 			$userInfo=$_SESSION['userInfo'];
-			$tabQuestion=getDataQuestion();
-			$nbP=ceil(count($tabQuestion)/5);
-			
-			$pa=1;
-			    if(isset($_GET['p']))
-			    {
-			        $pa=$_GET['p'];
-			    }
-			$pp=$pa-1;
-			$ps=$pa+1;
-			$cp="lq";
-			require("view/admin/listQuestions.php");
+			$subtitle="<br>Créer et paramétrer vos quizz";
+			$p=$page;
+			require("view/admin/home.php");
 		}
 
 
@@ -47,12 +36,6 @@
 		}
 
 
-		 // function trie($a, $b) 
-		 // {
-		 //    if ($a['score'] == $b['score']) return 0;
-		 //    return ($a['score'] < $b['score']) ? 1 : -1;
-			
-		 // }
 
 
 

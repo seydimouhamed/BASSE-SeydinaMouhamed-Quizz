@@ -1,5 +1,5 @@
 <?php
-require('controller/front.php');
+require_once('controller/front.php');
 
 if ( isset($_GET['origin'])) 
 {
@@ -15,10 +15,21 @@ if ( isset($_GET['origin']))
             login();
         }
     }
+    elseif($o=="inscription")
+    {
+        if(isset($_POST))
+        {
+            register($_POST);
+        }
+        else 
+        {
+            register();
+        }
+    }
     elseif($o=='deconnexion')
     {
         $_SESSION=array();
-        header('Location:index.php');
+        header('Location:index.php',true,303);
     }
     else
     {
@@ -28,7 +39,19 @@ if ( isset($_GET['origin']))
         }
         else
         {
-            echo " redirecte page";
+            if($o=='admin')
+            {
+                require_once('controller/admin.php');
+                    if(isset($_GET['action']))
+                    {
+                        $a=$_GET['action'];
+                        adminPage($a);
+                    }
+                    else
+                    {
+                        adminPage();
+                    }
+            }
         }
     }
 

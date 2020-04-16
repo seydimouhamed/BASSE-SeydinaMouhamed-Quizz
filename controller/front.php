@@ -25,8 +25,7 @@
 				$_SESSION['auth_type'] = $userInfo['type'];
 				if($userInfo['type']=='admin')
 				{
-					$subtitle="<br>Créer et paramétrer vos quizz";
-					require("view/admin/home.php");
+					header("Location:index.php?origin=admin");
 				}
 				else
 				{
@@ -38,3 +37,15 @@
 		}
 	}
 
+
+	function register($ar=array())
+	{
+		if(empty($ar))
+		{
+			require("view/player/inscriptionPlayer.php");
+		}
+		else
+		{
+			//incription treatment!
+		}
+	}
