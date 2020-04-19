@@ -19,16 +19,25 @@ body
     margin: 0 auto;
 }
 /*ALERT style */
-.alert
+.msg
 {
     padding: 20px;
-    background-color: #f44336;
     color: white;
     width: 40%;
     position: absolute;
     right: 0px;
+    z-index: 100;
 }
+.msg.alert
+{
+    background-color: #f44336;
 
+}
+.msg.succes
+{
+    background-color: #6cf436;
+
+}
 
 .closebtn {
     margin-left: 15px;
@@ -232,4 +241,25 @@ width: 100%;
     margin-left: 5px;
     font-size: 10px;
     font-weight: bold;
+}
+
+
+.box_menu
+{  margin-top: 25px;
+  margin-right: 3%;
+  border-radius: 7px;
+  float: right;
+  width: 25%;
+  height:295px;
+  background-color: white;  
+}
+
+.float_r
+{
+    float: right;
+}
+
+.float_l
+{
+    float: left; 
 }

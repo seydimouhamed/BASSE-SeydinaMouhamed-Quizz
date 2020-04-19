@@ -40,7 +40,7 @@ hr
 {
     width: 100%;
     height: 60px;
-    background-color:#3bc9db;
+    background-color:#51bfd0;
     color: white;
     line-height: 3.5em;
 }
@@ -63,7 +63,7 @@ hr
 }
 .iptxt_1:focus
 {
-    border-color: darkturquoise;
+    border-color: #51bfd0;
 }
 .iptxt_1
 {
@@ -109,7 +109,7 @@ hr
     width: 50%;
     margin-top: 30px;
     margin-left: 25%;
-    border: 4px solid #3bc9db;
+    border: 4px solid #51bfd0;
     border-radius: 50%;
 }
 .float_f
@@ -120,7 +120,7 @@ hr
 {
     float: right;
 }
-a
+.a
 {
     color: lightgray;
     text-decoration: none;
@@ -131,7 +131,7 @@ a
     border: none;
     color:white;
     border-radius: 5px;
-    background-color:#3bc9db;
+    background-color:#51bfd0;
 }
 .file
 {

@@ -17,9 +17,9 @@ if ( isset($_GET['origin']))
     }
     elseif($o=="inscription")
     {
-        if(isset($_POST))
+        if(!empty($_POST))
         {
-            register($_POST);
+            register($_POST,$_FILES);
         }
         else 
         {
@@ -51,6 +51,12 @@ if ( isset($_GET['origin']))
                     {
                         adminPage();
                     }
+            }
+            if($o=="player")
+            {
+                require_once('controller/player.php');
+                 play();
+
             }
         }
     }

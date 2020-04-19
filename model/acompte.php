@@ -168,12 +168,12 @@
 
 //----------------------------------------------------------------------------------------------------------------
 
-function registeruser($log,$pwd,$fn,$ln,$f_imguser)
+function registeruser($log,$pwd,$fn,$ln,$pfl,$f_imguser)
 { 
 			$c=getData();          
             $avatar=registerUserAvatar($f_imguser);
 
-            $userDetInfo=array("login"=>$log,"pwd"=>$pwd,"firstname"=>$fn,"lastname"=>$ln,"avatar"=>$avatar,"score"=>0);
+            $userDetInfo=array("login"=>$log,"pwd"=>$pwd,"firstname"=>$fn,"lastname"=>$ln,"avatar"=>$avatar,"score"=>0,"type"=>$pfl);
             $c[]=$userDetInfo;
             $jsonData=json_encode($c);
 

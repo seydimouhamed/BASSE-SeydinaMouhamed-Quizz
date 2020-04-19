@@ -1,4 +1,5 @@
-<?php $title = 'Home admin'; ?>
+<?php $title = 'Home admin';
+?>
 
 <?php ob_start();
     include("view/admin/$page.php"); 

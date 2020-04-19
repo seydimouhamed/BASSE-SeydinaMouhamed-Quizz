@@ -2,7 +2,7 @@
     <?php 
         $msg_txt="Proposer des Quizz";
         $msg_avt="Admin";
-        // Pour tester votre niveau de culture générale;
+        $profil="admin";
         include("view/commons/formInscription.php");
     ?>
 </div>

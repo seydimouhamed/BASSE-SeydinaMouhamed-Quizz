@@ -20,10 +20,13 @@
                 <div class="titre">Le plaisir de jouer</div>
             </nav>
             <?php
-                if(!empty($msg))
+                
+                if(isset($_SESSION['msg']) && !empty($_SESSION['msg']))
                 {
+                    $msg=$_SESSION['msg'];
+                    $_SESSION['msg']=array();
             ?>
-                    <div class="alert <?= $msg['type']?>">
+                    <div class="msg <?= $msg['type']?>">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                         <strong><?= $msg['type']?></strong> <?= $msg['text']?>
                     </div>

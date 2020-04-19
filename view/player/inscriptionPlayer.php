@@ -1,5 +1,4 @@
 <?php $title="S'inscrire"?>
-
 <?php 
 ob_start(); 
 ?>
@@ -7,6 +6,7 @@ ob_start();
     <?php
     $msg_txt="Pour tester votre niveau de culture générale";
     $msg_avt="du joueur";
+    $profil="user";
     include("view/commons/formInscription.php");
     ?>
 </div>

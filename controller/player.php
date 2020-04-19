@@ -36,12 +36,12 @@
 
 		$userInfo=$_SESSION['userInfo'];
 		$topScore=$GLOBALS['topScore'];
-		var_dump($topScore);
-		//$tabT=$_SESSION['jeu'];
 		$np=getNumberQtns();
 		$ind=$cp-1;
 		$tabuq=getQtn($ind);
 
+		$subtitle="Bienvenue sur la plateforme de jeu de quizz<br/>
+		Jouer et tester votre niveau de culture général";		
 		require('view/player/play.php');
  	}
 
