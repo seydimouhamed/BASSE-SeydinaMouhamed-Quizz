@@ -4,6 +4,7 @@
 			$userInfo=$_SESSION['userInfo'];
 			$subtitle="<br>Créer et paramétrer vos quizz";
 			$p=$page;
+			
 			require("view/admin/home.php");
 		}
 
