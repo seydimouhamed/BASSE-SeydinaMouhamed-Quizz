@@ -4,7 +4,9 @@
 	    <div class="contain_sub">
 
 			<?php
-			
+
+$tabplayers=getUsersScore();
+$nbP=ceil(count($tabplayers)/5);
 	            if(empty($tabplayers))
 	            {
 	                echo "<h4>Rien à afficher</h4>";
