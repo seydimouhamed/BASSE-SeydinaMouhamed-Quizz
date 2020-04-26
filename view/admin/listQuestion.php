@@ -11,10 +11,37 @@
         </div>
         <p><br></p>
         <div class="contain_sub">
+
+            <?php			
+			$pa=1;
+			    if(isset($_GET['p']))
+			    {
+			        $pa=$_GET['p'];
+			    }
+			$pp=$pa-1;
+			$ps=$pa+1;
+            if(isset($tabQuestion))
+            {
+                paginateQuestion($tabQuestion,$pa);
+            }
+            else
+            {
+                echo "<h4>Rien à afficher</h4>";
+            }
+            ?>
 	        
 	    </div>
 
         <div class="div_nav">
-            <a href='index.php?origin=admin&action=lq&p=$ps' class='ipbtn float_r'>Suivant</a>           
-        </div>
+            <?php if($pp>=1){?>
+                <a href='index.php?origin=admin&action=listQuestion&p=<?=$pp?>' class='ipbtn float_l'>Précédent</a>
+            <?php
+            }
+            if($ps<$nbP){
+            ?>
+                <a href='index.php?origin=admin&action=listQuestion&p=<?=$ps?>' class='ipbtn float_r'>Suivant</a>           
+            <?php
+            }
+            ?>
+    </div>
 </div>

@@ -47,6 +47,10 @@ if ( isset($_GET['origin']))
                         $a=$_GET['action'];
                         adminPage($a);
                     }
+                    elseif(isset($_POST['register_question']))
+                    {
+                        registerQuestion($_POST);
+                    }
                     else
                     {
                         adminPage();

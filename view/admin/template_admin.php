@@ -18,7 +18,7 @@
                 <a href="index.php?origin=admin&action=listQuestion"><div class="li <?php $act="active"; if($p=="listQuestion") {echo $act;}?>" id="sm_1"><span>Liste Questions</span></div></a>
                 <a href="index.php?origin=admin&action=createAdmin"><div class="li <?php if($p=="createAdmin") {echo $act;}?> " id="sm_2">Créer Admin</div></a>
                 <a href="index.php?origin=admin&action=joueurs"><div class="li <?php if($p=="joueurs") {echo $act;}?>" id="sm_3">Liste joueurs</div></a>
-                <a href="index.php?origin=admin&action=createQuestion"> <div class="li  <?php if($p=="createQuestion") {echo $act;}?>" id="sm_4">Créer Questions</div></a>
+                <a href="index.php?origin=admin&action=createQuestion1"> <div class="li  <?php if($p=="createQuestion1") {echo $act;}?>" id="sm_4">Créer Questions</div></a>
             </div>
         </div>
 

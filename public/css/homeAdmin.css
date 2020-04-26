@@ -269,3 +269,234 @@ width: 100%;
     background-color: rgba(32, 32, 219, 0.836);
     color: white;
 }
+
+.inline
+{
+    display: inline;
+}
+
+
+
+
+
+
+
+
+
+/* -----------------------------------------------  X */
+        /* STYLE CHECKEDBOX */
+/* -----------------------------------------------  X */
+
+
+/* The container */
+.c_rep {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .c_rep input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 2px solid #3bc9db;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .c_rep:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .c_rep input:checked ~ .checkmark {
+    background-color: white;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .c_rep input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .c_rep .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3bc9db;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* The container */
+  .c_rep {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .c_rep input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 2px solid #3bc9db;
+  }
+  /* On mouse-over, add a grey background color */
+  .c_rep:hover input ~ .check {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .c_rep input:checked ~ .check {
+    background-color: white;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .check:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .c_rep input:checked ~ .check:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .c_rep .check:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #3bc9db;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+/* dans la page admin*/
+.admin .c_rep .check:after {
+    left: 2px;
+    top: 2px;
+    width: 2px;
+    height: 2px;
+  }
+
+
+.check, .checkmark {
+    width: 10px;
+    height: 10px;
+  }
+
+  
+  .c_rep .checkmark:after {
+    top: 2.5px;
+   left: 2.5px;
+   width: 5px;
+   height: 5px;
+}
+
+.sm_font
+{
+    font-size: 10px;
+}
+
+.sm_font13
+{
+    font-size: 13px;
+    color:gray;
+}
+
+.ol
+{
+    overflow: scroll;
+    height: 100%;
+}
+
+.mg_2,ul,.c_rep
+{
+    margin:0px;
+}
+
+.w80
+{
+    width: 60%;
+    margin-left: 20%;
+    height: 15px;
+    clear: both;
+}
+hr
+{
+    width: 100%;
+    visibility: hidden;
+}

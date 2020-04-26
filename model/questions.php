@@ -5,6 +5,20 @@
 	    	return json_decode($q,true);
 	    }
 
+		function saveQuestion($qts)
+		{
+			$db="db/questions.json";
+			$q_json = file_get_contents($db);
+			$data=json_decode($q_json,true);
+
+			//ajouter la nouvelle question
+			$data[]=$qts;
+			$jsonData=json_encode($data);
+
+			return file_put_contents($db,$jsonData);
+			
+
+		}
 	    function newGame()
 	    {
 	    	$dq=getDataQuestion();

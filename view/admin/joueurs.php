@@ -5,27 +5,31 @@
 
 			<?php
 
-$tabplayers=getUsersScore();
-$nbP=ceil(count($tabplayers)/5);
-	            if(empty($tabplayers))
-	            {
-	                echo "<h4>Rien à afficher</h4>";
-	            }
-	            else
-	            {
-	                echo "<table style='width:96%;margin-left:2%;'>";
-	                echo"<tr><th>Nom</th><th>Prénom</th><th>Score</th></th>";
-	                foreach($tabplayers as $u)
-	                {
-	                    echo "<tr><td style=' text-transform: uppercase;'>".$u['lastname']."</td><td style=' text-transform: capitalize;'>".$u['firstname']."</td><td>".$u['score']."pts</td></tr>";
-	                }
-	                echo "</table>";
-	            }
+			$tab=getUsersScore();
+			$nbP=ceil(count($tab)/2);
+			$pa=1;
+			    if(isset($_GET['p']))
+			    {
+			        $pa=$_GET['p'];
+			    }
+			$pp=$pa-1;
+			$ps=$pa+1;
+			paginateJoueurs($tab,$pa)
 	        ?>
 	        
 	    </div>
 
         <div class="div_nav">
-            <a href='index.php?origin=admin&action=lq&p=$ps' class='ipbtn float_r'>Suivant</a>           
-        </div>
+			
+		<?php if($pp>=1){?>
+                <a href='index.php?origin=admin&action=joueurs&p=<?=$pp?>' class='ipbtn float_l'>Précédent</a>
+            <?php
+            }
+            if($ps<$nbP){
+            ?>
+                <a href='index.php?origin=admin&action=joueurs&p=<?=$ps?>' class='ipbtn float_r'>Suivant</a>           
+            <?php
+            }
+            ?>
+         </div>
 	</div>
