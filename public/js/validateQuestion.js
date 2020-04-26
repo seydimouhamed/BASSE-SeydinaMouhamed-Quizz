@@ -5,9 +5,23 @@
        var typ = document.getElementById('type').value
        if(typ==="ct")
        {
-        document.getElementById("div_reponse").innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;</label> <input type='text' class='stlIp' name='breponses[]' /> </span>"
+        document.getElementById("div_reponse").innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;"+
+        "</label> <input type='text' class='stlIp'error='error5' name='breponses[]' /> </span>"
        }
-    });   
+    }); 
+    
+    
+    function removeErrorTxt(id)
+    {
+        console.log("le "+id);
+       document.getElementById(id).innerHTML="";
+    }
+
+    //suprimer l'erreur quand on selectionne un check ou radio
+    function removeErCk()
+    {
+       document.getElementById("general_error").innerHTML="";
+    }
     
 
     function disabledBtn()
@@ -24,6 +38,9 @@
         }
 
     }
+
+
+
 function numberChamp()
 {
 	const champs=document.getElementsByTagName("input");
@@ -39,10 +56,41 @@ function numberChamp()
 
 	return number;
 }
+
+
+function validateTextReponse()
+{
+    const inputs = document.getElementsByTagName("input");
+    var nbrCpNonvide=0;
+    for(let input of inputs)
+    {
+        if(input.hasAttribute("error0"))
+        {
+            if(input.value)
+            {
+                nbrCpNonvide++
+            }
+        }
+    }
+
+    return nbrCpNonvide >=2;
+    
+}
+
+
+// function validateScore()
+// {
+   
+//    var score= document.getElementById("score").value;
+//    if(score)
+        
+// }
+
 function validate()
 {
    var form = document.getElementById("mainform");
    var typ = document.getElementById('type').value
+   //si c'est un choix text va obieit a la validation des champs vides
    if(typ==="ct")
    {
 	   return true;
@@ -59,22 +107,32 @@ function validate()
 		   checked++;
 	   }
    }
+   //appel de la fonction qui determine si nombre de input ecrit est > a 2
+   var tv=validateTextReponse();
 
-   if (checked > 0) 
+   if (checked > 0 && tv) 
    {
-
 	   return true;
-   } else 
+   } 
+   else 
    {
-       document.getElementById("general_error").innerHTML="veuillez cocher un champ";
-	   return false;
+       if(checked <= 0)
+       {
+            document.getElementById("general_error").innerHTML="veuillez cocher un champ <br>";
+       }
+       if(!tv)
+       {
+            document.getElementById("general_error").innerHTML+="il faut au moins remplir deux reponses"; 
+       }
+       return false;
    }
-};
+}
+
     
 var i = 0; /* Set Global Variable i */
 function increment()
 {
-    i += 1; /* Function for automatic increment of field's "Name" attribute. */
+    i += 1; /* Function pour incrémenter automatiquement. */
 }
 /*
 ---------------------------------------------
@@ -111,18 +169,20 @@ Functions that will be called upon, when user click on the Name text field.
 
 ----------------------------------------------------------------------------
 */
+
     function generateInputs()
     {
         var type=document.getElementById("type").value
         if(type==="cm" || type==="cs")
          {
-            //creattion de span qui ce contenir la ligne
+             //r=span, y=input, l=label, g=bouton de suppression, c=check ou radio
+            //creattion de span qui ce contenir la ligne r=span
             var r = document.createElement('span');
                     r.setAttribute("class", "w_96");
             // creattion du label
             var l = document.createElement('LABEL');
                 l.setAttribute("class", "lab");
-            //creation du input
+            //creation du input y=input
             var y = document.createElement("INPUT");
                 y.setAttribute("type", "text");
                 y.setAttribute("class", "stlIp");
@@ -135,14 +195,18 @@ Functions that will be called upon, when user click on the Name text field.
                 var g = document.createElement("input");
                 g.setAttribute("type", "button");
                 g.setAttribute("class", "btn_remove");
+                //pour générer le i
                 increment();
-                //l.innerHTML = 'Reponse '+i;
+                
                 y.setAttribute("Name", "reponse_" + i);
-                y.setAttribute("error", "error_" +(i+3));
+                y.setAttribute('onkeyup','removeErCk()');
+                y.setAttribute("error0", "error_" +(i+3));
                     r.appendChild(y);
                 var c = document.createElement("INPUT");
                     c.setAttribute("class", "ck");
                     c.setAttribute("Name", "check[]" );
+                    c.setAttribute("onclick", "removeErCk()" );
+                    removeErCk()
                     if(type==="cm")
                     {
                         c.setAttribute("type", "checkbox");
@@ -171,11 +235,6 @@ Functions that will be called upon, when user click on the Name text field.
             // appele de function de limitation des chmaps   
               disabledBtn();
         }
-        // else
-        // {
-        //     y.setAttribute("Name", "reponse" );
-        //     r.appendChild(y); 
-        // }
     }
 
 
@@ -189,11 +248,10 @@ Functions that will be called upon, when user click on the Name text field.
         }
     }
 
+
 /*
 -----------------------------------------------------------------------------
-
-Functions that will be called upon, when user click on the Reset Button.
-
+Functions pour supprimer tout les champs!
 ------------------------------------------------------------------------------
 */
     function resetElements()

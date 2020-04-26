@@ -24,7 +24,7 @@
 				$index=1;
 				foreach ($post as $key => $p) 
 				{
-					if(strpos($key, "reponse")!== FALSE)
+					if(strpos($key, "reponse")!== FALSE && $p!="")
 					{
 						$reponses[]=$p;
 						// l'enleve le bouton submit il ne me restera que les données

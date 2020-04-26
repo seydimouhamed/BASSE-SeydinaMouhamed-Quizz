@@ -16,7 +16,7 @@
                 {   
                     const inputs=document.getElementsByTagName("input");
                     var error=false;
-                    for(input of inputs)
+                    for(let input of inputs)
                     {
                         if(input.hasAttribute("error"))
                         {
