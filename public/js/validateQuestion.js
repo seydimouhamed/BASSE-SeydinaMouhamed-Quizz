@@ -5,15 +5,13 @@
        var typ = document.getElementById('type').value
        if(typ==="ct")
        {
-        document.getElementById("div_reponse").innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;"+
-        "</label> <input type='text' class='stlIp'error='error5' name='breponses[]' /> </span>"
+        document.getElementById("div_reponse").innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;</label> <input type='text' class='stlIp' onkeyup='removeErrorTxt(\"errortxt\")' error='errortxt' name='breponses[]' /></span> <br> <small id='errortxt' class='error'>test</small>";
        }
     }); 
     
     
     function removeErrorTxt(id)
     {
-        console.log("le "+id);
        document.getElementById(id).innerHTML="";
     }
 
@@ -28,7 +26,7 @@
     {
         var btn= document.getElementById("btn_gene");
         var num=numberChamp();
-        if(num>=5)
+        if(num>=10)
         {
             btn.setAttribute("disabled","true");
         }
@@ -78,54 +76,73 @@ function validateTextReponse()
 }
 
 
-// function validateScore()
-// {
-   
-//    var score= document.getElementById("score").value;
-//    if(score)
+function validateScQuest()
+{
+    var score= document.getElementById("score").value;
+    var question = document.getElementById("question").value;
+    var error=false;
+
+   if(!Number.isInteger(+score))
+   {
+        document.getElementById('error_2').innerText="veuillez mettre un nombre entier positif";
+       error= true; 
+   }
+   if(!question)
+   {
+    document.getElementById('error_1').innerText="la question ne doit pas être vide";
+     error=true;
         
-// }
+   }
+    
+
+   return !error;
+        
+}
 
 function validate()
 {
    var form = document.getElementById("mainform");
    var typ = document.getElementById('type').value
+   var errorep=false;
    //si c'est un choix text va obieit a la validation des champs vides
-   if(typ==="ct")
+   
+   if(typ=="cm" || typ=='cs')
    {
-	   return true;
-   }
-   var checked = 0;
+     
+            var checked = 0;
 
-   //Reference a tous les checkboxs
-   var chks = form.getElementsByClassName("ck");
+            //Reference a tous les checkboxs
+            var chks = form.getElementsByClassName("ck");
 
-   //Poru compter le nombre de checkboxs.
-   for (var i = 0; i < chks.length; i++) 
-   { 
-	   if (chks[i].checked) {
-		   checked++;
-	   }
-   }
-   //appel de la fonction qui determine si nombre de input ecrit est > a 2
-   var tv=validateTextReponse();
+            //Poru compter le nombre de checkboxs.
+            for (var i = 0; i < chks.length; i++) 
+            { 
+                if (chks[i].checked) {
+                    checked++;
+                }
+            }
+            //appel de la fonction qui determine si nombre de input ecrit est > a 2
+            var tv=validateTextReponse();
 
-   if (checked > 0 && tv) 
-   {
-	   return true;
-   } 
-   else 
-   {
-       if(checked <= 0)
-       {
-            document.getElementById("general_error").innerHTML="veuillez cocher un champ <br>";
-       }
-       if(!tv)
-       {
-            document.getElementById("general_error").innerHTML+="il faut au moins remplir deux reponses"; 
-       }
-       return false;
-   }
+            
+            if (checked <= 0 || !tv) 
+            {
+                if(checked <= 0)
+                {
+                        document.getElementById("general_error").innerHTML="veuillez cocher un champ <br>";
+                }
+                if(!tv)
+                {
+                        document.getElementById("general_error").innerHTML+="il faut au moins remplir deux reponses"; 
+                }
+
+                errorep = true;
+            }
+
+    }
+
+
+    return validateScQuest() && !errorep;
 }
 
     

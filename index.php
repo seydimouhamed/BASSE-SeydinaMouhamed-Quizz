@@ -59,8 +59,21 @@ if ( isset($_GET['origin']))
             if($o=="player")
             {
                 require_once('controller/player.php');
-                 play();
-
+                $a=isset($_GET['action'])?$_GET['action']:"pl";
+                if($a=="finjeu")
+                {
+                    finjeu();
+                }
+                else
+                {
+                    $data =array();
+                    if(!empty($_POST))
+                    {
+                        $data=$_POST;
+                    }
+                    play($data);
+                }
+                
             }
         }
     }

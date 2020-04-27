@@ -263,3 +263,7 @@ width: 100%;
 {
     float: left; 
 }
+.ipbtn:disabled
+{
+    background-color:gray;
+}

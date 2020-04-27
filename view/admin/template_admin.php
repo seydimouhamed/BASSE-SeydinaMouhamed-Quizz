@@ -1,7 +1,8 @@
 <?php ob_start(); ?>
        <link rel="stylesheet" type="text/css" href="public/css/homeAdmin.css">
-       <!-- <link rel="stylesheet" type="text/css" href="public/css/styleInscription.css">
-        -->
+       <link rel="stylesheet" type="text/css" href="public/css/styleCheck.css">
+       <link rel="stylesheet" type="text/css" href="public/css/styleCheckAdmin.css">
+        
     <div class="body_box">
         <div class="box_menu_1">
             <div class="div_avatar_1">

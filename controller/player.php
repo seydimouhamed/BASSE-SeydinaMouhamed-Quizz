@@ -3,6 +3,10 @@
  $topScore=getUsersScore();
  $topScore=array_slice($topScore, 0,5);
 
+
+ $subtitle="Bienvenue sur la plateforme de jeu de quizz<br/>
+ Jouer et tester votre niveau de culture général";
+
  	function play($d=array())
  	{
 		$cp=1;
@@ -38,10 +42,10 @@
 		$topScore=$GLOBALS['topScore'];
 		$np=getNumberQtns();
 		$ind=$cp-1;
-		$tabuq=getQtn($ind);
+		$tabuq=getQtn($ind);	
+		
 
-		$subtitle="Bienvenue sur la plateforme de jeu de quizz<br/>
-		Jouer et tester votre niveau de culture général";		
+		$subtitle=$GLOBALS['subtitle'];	
 		require('view/player/play.php');
  	}
 
@@ -52,15 +56,16 @@
 		$topScore=$GLOBALS['topScore'];
 		$newScore=3;
 
+		$subtitle=$GLOBALS['subtitle'];	
 		require('view/player/finjeu.php');
 
-		if($newScore>$userInfo['score'])
-		{
-			setNewScore($newScore);
-		}
-		else
-		{
-			setNewScore($newScore);
-			echo "<br>score inferieur $newScore";
-		}
+		// if($newScore>$userInfo['score'])
+		// {
+		// 	setNewScore($newScore);
+		// }
+		// else
+		// {
+		// 	setNewScore($newScore);
+		// 	echo "<br>score inferieur $newScore";
+		// }
  	}
