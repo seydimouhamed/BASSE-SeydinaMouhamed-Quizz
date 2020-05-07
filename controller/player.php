@@ -55,17 +55,12 @@
 		$tabT=$_SESSION['jeu'];
 		$topScore=$GLOBALS['topScore'];
 		$newScore=3;
-
 		$subtitle=$GLOBALS['subtitle'];	
 		require('view/player/finjeu.php');
 
-		// if($newScore>$userInfo['score'])
-		// {
-		// 	setNewScore($newScore);
-		// }
-		// else
-		// {
-		// 	setNewScore($newScore);
-		// 	echo "<br>score inferieur $newScore";
-		// }
+			if($newScore>$userInfo['score'])
+			{
+				$id=$userInfo['id'];
+				setNewScore($id,$newScore);
+			}
  	}

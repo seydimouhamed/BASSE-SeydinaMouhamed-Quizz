@@ -1,6 +1,13 @@
 <?php
 require_once('controller/front.php');
 
+
+$ac="action";
+
+// if(isset($_POST['updateUser']))
+// {
+// }
+
 if ( isset($_GET['origin'])) 
 {
     $o=$_GET['origin'];
@@ -42,14 +49,35 @@ if ( isset($_GET['origin']))
             if($o=='admin')
             {
                 require_once('controller/admin.php');
-                    if(isset($_GET['action']))
+                    if(isset($_GET[$ac]))
                     {
-                        $a=$_GET['action'];
+                        $a=$_GET[$ac];
                         adminPage($a);
+                    }
+                    elseif(isset($_GET["updateQuestion"]))
+                    {
+
+                        updateQuestion($_POST);
+                        
+
+                    }
+                    elseif(isset($_GET["changeStatut"]))
+                    {
+                            $id=$_GET["changeStatut"];
+                            acDesPlayer($id);
+                    }
+                    elseif(isset($_GET["removePlayer"]))
+                    {
+                            $id=$_GET["removePlayer"];
+                            removePlayer($id);
                     }
                     elseif(isset($_POST['register_question']))
                     {
-                        registerQuestion($_POST);
+                       registerQuestion($_POST);
+                    }
+                    elseif(isset($_POST['rnbrQuestion']))
+                    {
+                         updateNbrQPJ($_POST);
                     }
                     else
                     {
@@ -59,7 +87,7 @@ if ( isset($_GET['origin']))
             if($o=="player")
             {
                 require_once('controller/player.php');
-                $a=isset($_GET['action'])?$_GET['action']:"pl";
+                $a=isset($_GET[$ac])?$_GET[$ac]:"pl";
                 if($a=="finjeu")
                 {
                     finjeu();

@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^origin index.php
+RewriteRule ^index/([a-z]+)$ index.php?origin=$1
+RewriteRule ^index/([a-z]+)/([A-Z]+)$ index.php?origin=$1action=$2

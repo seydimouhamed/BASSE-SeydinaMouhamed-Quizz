@@ -132,10 +132,13 @@
             </div>
             <div class="contenu_onglets">
                 <div class="contenu_onglet" id="contenu_onglet_quoi">
-                    <?php foreach ($topScore as  $k) {
+                    <?php 
+                        $fn="firstname";
+                        $ln="lastname";
+                        foreach ($topScore as  $k) {
                     ?>
                         <div class="div_ss_score">
-                            <h3>  <span class="float_l"><?php if($k['firstname']==$userInfo['firstname'] && $k['lastname']==$userInfo['lastname']){ echo "Vous";}else{ echo $k['firstname'] ; ?>&nbsp;&nbsp;<?php echo $k['lastname'];}?> </span><span class="float_r spn_score"><?= $k['score']." "?>pts</span> </h3>
+                            <h3>  <span class="float_l"><?php if($k[$fn]==$userInfo[$fn] && $k[$ln]==$userInfo[$ln]){ echo "Vous";}else{ echo $k['firstname'] ; ?>&nbsp;&nbsp;<?php echo $k['lastname'];}?> </span><span class="float_r spn_score"><?= $k['score']." "?>pts</span> </h3>
                         </div>
                     <?php }?>
                 </div>

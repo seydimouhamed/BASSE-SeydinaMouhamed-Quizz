@@ -3,7 +3,7 @@
 <div class="contain_pl">
 	    <h2 class="h2">Parametrer votre question 2</h2>
 	    <div class="contain_sub">
-		        <form method="POST" id="mainform"action="index.php?origin=admin" name="mainform" onsubmit="return validate();">
+		        <form method="POST" id="mainform"action="index.php?origin=admin" onsubmit="return validate();" name="mainform" >
 		            <div class="div_question">
 		                <label>Questions</label>
                         <textarea name="question"  onkeyup='removeErrorTxt("error_1")' id="question" error='error_1'></textarea>
@@ -20,7 +20,7 @@
 		                    <option value="cs">choix simple</option>
 		                    <option value="ct">choix text</option>
 		                </select>
-		                <span><input type="button" class="btn_gene" onclick="generateInputs()" id="btn_gene"  value="&nbsp;" ></span>
+		                <span><input type="button" class="btn_gene"  id="btn_gene"  value="&nbsp;" ></span>
 		            </div>
 		            <br>
 		            <span id="div_reponse" >

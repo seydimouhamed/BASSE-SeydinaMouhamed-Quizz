@@ -16,10 +16,11 @@
                 </div>
             </div>
             <div class="div_menu"> 
-                <a href="index.php?origin=admin&action=listQuestion"><div class="li <?php $act="active"; if($p=="listQuestion") {echo $act;}?>" id="sm_1"><span>Liste Questions</span></div></a>
-                <a href="index.php?origin=admin&action=createAdmin"><div class="li <?php if($p=="createAdmin") {echo $act;}?> " id="sm_2">Créer Admin</div></a>
-                <a href="index.php?origin=admin&action=joueurs"><div class="li <?php if($p=="joueurs") {echo $act;}?>" id="sm_3">Liste joueurs</div></a>
-                <a href="index.php?origin=admin&action=createQuestion1"> <div class="li  <?php if($p=="createQuestion1") {echo $act;}?>" id="sm_4">Créer Questions</div></a>
+                <a href="index.php?origin=admin&action=dashboard"> <div class="li  <?php $act="active"; if($p=="dashboard") {echo $act;}?> sm_4" >Dashboard</div></a>
+                <a href="index.php?origin=admin&action=listQuestion"><div class="li <?php  if($p=="listQuestion") {echo $act;}?> sm_1" ><span>Liste Questions</span></div></a>
+                <a href="index.php?origin=admin&action=createAdmin"><div class="li <?php if($p=="createAdmin") {echo $act;}?> sm_2" >Créer Admin</div></a>
+                <a href="index.php?origin=admin&action=joueurs"><div class="li <?php if($p=="joueurs") {echo $act;}?> sm_3" >Liste joueurs</div></a>
+                <a href="index.php?origin=admin&action=createQuestion1"> <div class="li  sm_4 <?php if($p=="createQuestion1") {echo $act;}?>" >Créer Questions</div></a>
             </div>
         </div>
 

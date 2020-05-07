@@ -1,4 +1,4 @@
-
+<?php include('modalAdmin.php') ;?>
 	<div class="contain_pl">
 	    <h2 class="h2">Listes des joueurs par score</h2>
 	    <div class="contain_sub">
@@ -25,7 +25,7 @@
                 <a href='index.php?origin=admin&action=joueurs&p=<?=$pp?>' class='ipbtn float_l'>Précédent</a>
             <?php
             }
-            if($ps<$nbP){
+            if($ps<=$nbP){
             ?>
                 <a href='index.php?origin=admin&action=joueurs&p=<?=$ps?>' class='ipbtn float_r'>Suivant</a>           
             <?php
@@ -33,3 +33,4 @@
             ?>
          </div>
 	</div>
+    <script type="text/javascript" src="./public/js/modalAdmin.js"></script>

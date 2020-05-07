@@ -152,14 +152,12 @@ hr
 .btn_gene
 {
     /* position: absolute; */
-    background-image:url("../icones/ic-ajout.png");
+    background-image:url("../icones/ic-ajout-reponse.png");
     background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 5px;
-    color: greenyellow;
-     max-width: 30px;
+    border: none;
+     width: 30px;
     height: 30px;
-    background-color:#3bc9db;
+    background-color:white;
 }
 .a
 {

@@ -7,6 +7,13 @@
     	return json_decode($user_data,true);
     }
 
+    function setData($d)
+    {
+        $jsonData=json_encode($d);
+
+         return file_put_contents('db/connexion.json',$jsonData);
+         
+    }
 
      function getPlayers()
      {
@@ -52,11 +59,11 @@
 	{
 		$c=getData();
 		$allUsersScore=array();
-		foreach ($c as $val) 
+		foreach ($c as $i => $val) 
 		{
             if($val['type']=='user')
             {
-			     $allUsersScore[]=array("firstname"=>$val['firstname'],"lastname"=>$val['lastname'],"score"=>$val["score"]);
+			     $allUsersScore[]=array("firstname"=>$val['firstname'],"lastname"=>$val['lastname'],"score"=>$val["score"],"statut"=>$val["statut"], "id" =>$i);
             }
 		}
 
@@ -67,10 +74,65 @@
 
 
 
+    function acDesPlayer($i)
+    {
+        $c=getData();
+        if(array_key_exists($i,$c))
+        {
+            if($c[$i]['statut']=="on")
+            {
+                $c[$i]['statut']="off";
+            }
+            else
+            {
+                $c[$i]['statut']="on";
+            }
+        }
+        $msg=array();
+        if(setData($c))
+        {
+				$msg=array('type'=>'succes','text'=>'Le statut a été actualisé avec succes!');
+				
+        }	
+        else
+        {
+				$msg=array('type'=>'alert','text'=>'Le statut n\'a été pas actualisé!');
+				
+        }
 
+        $_SESSION['msg']=$msg;
+		header('Location:index.php?origin=admin&action=joueurs');
+    }
+
+    function removePlayer($i)
+    {
+        $c=getData();
+        if(array_key_exists($i,$c))
+        {
+            unset($c[$i]);
+        }
+
+        $msg=array();
+
+        if(setData($c))
+        {
+				$msg=array('type'=>'succes','text'=>'Le compte a été supprimé!');
+				
+        }	
+        else
+        {
+				$msg=array('type'=>'alert','text'=>'Le compte n\'a été pas supprimé!');
+				
+        }
+
+        $_SESSION['msg']=$msg;
+		header('Location:index.php?origin=admin&action=joueurs');
+    }
+
+    
          function trie($a, $b) 
          {
-            if ($a['score'] == $b['score']) return 0;
+            if ($a['score'] == $b['score']){ return 0;}
             return ($a['score'] < $b['score']) ? 1 : -1;
             
          }
@@ -78,12 +140,15 @@
 
 
 
-            function setNewScore($score)
+            function setNewScore($i,$score)
             {
-                $un=$_SESSION['userInfo']['login'];
-                $n=getUserByUserName($un);
-                print_r($_SESSION['userInfo']);
+                $c=getData();
+                if(array_key_exists($i,$c))
+                {
+                    $c[$i]['score']=$score;
+                }
 
+                return setData($c);
             }
 //----------------------------------------------------------------------------------------------------------------
 
@@ -123,12 +188,11 @@
             $check = getimagesize($avatar["tmp_name"]);
             if($check !== false)
             {
-                //echo "File is an image - " . $check["mime"] . ".";
+                //dsklsfdkml
                 $uploadOk = 1;
             } 
             else
             {
-                //echo "File is not an image.";
                 $uploadOk = 0;
             }
         }

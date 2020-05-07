@@ -7,10 +7,47 @@
 			$p=$page;
 			
 			$t=getDataQuestion();
-			$tabQuestion=array_reverse($t);
+			$nbrQJ=getNbrQPJ();
+			$tabQuestion=$t;
 			$nbP=ceil(count($tabQuestion)/5);
 			
 			require("view/admin/home.php");
+		}
+
+		function updateQuestion($post)
+		{
+			$reponses=array();
+			$breponses=array();
+			unset($post["updateQuestion"]);
+			$rep="reponses";
+			if($post["type"]!=="ct")
+			{
+				$index=1;
+				foreach ($post as $key => $p) 
+				{
+					if(strpos($key, "reponse")!== FALSE && $p!="")
+					{
+						$reponses[]=$p;
+						// l'enleve le bouton submit il ne me restera que les données
+						unset($post[$key]);
+						if(in_array(substr($key, 8), $post['check']))
+						{
+							$breponses[]="$index";
+						}
+						$index++;
+					}
+				}
+				// l'enleve larray check contenant les numéros désordonnées!
+				unset($post["check"]);
+
+				$post+= [$rep => $reponses];
+				$post["breponses"]=$breponses;
+
+			}
+
+			$post+=["currep"=>array()];	
+			updateQ($post);
+
 		}
 
 		function registerQuestion($post)
@@ -18,7 +55,7 @@
 			$reponses=array();
 			$breponses=array();
 			unset($post["register_question"]);
-			
+			$rep="reponses";
 			if($post["type"]!=="ct")
 			{
 				$index=1;
@@ -39,7 +76,7 @@
 				// l'enleve larray check contenant les numéros désordonnées!
 				unset($post["check"]);
 
-				$post+= ["reponses" => $reponses];
+				$post+= [$rep => $reponses];
 				$post["breponses"]=$breponses;
 				 
 			}
@@ -51,7 +88,7 @@
 			}
 			else
 			{
-				header('Location:index.php?origin=admin&action=createAdmin');
+				header('Location:index.php?origin=admin&action=createQuestion1');
 			}
 			
 
@@ -59,32 +96,60 @@
 
 
 
-
+		function updateNbrQPJ($p)
+		{
+			$nbr=$p['nbrQJ'];
+			$msg="";
+			if(!saveNbrQPJ($nbr))
+			{
+				$msg=array('type'=>'alert','text'=>'Le nombre de question par jeu n\'a pas été actualisé');
+			}	
+			else
+			{
+				$msg=array('type'=>'succes','text'=>'Le nombre de question par jeu a été actualisé avec succès');
+			}
+				$_SESSION['msg']=$msg;
+			
+			header('Location:index.php?origin=admin&action=listQuestion');
+			
+		}
 
 
 
 		function paginateJoueurs($tab,$page=1)
 		{
 
-			$nbPage=ceil(count($tab)/2);
-			$indDep=($page-1)*$nbPage;
+			$indDep=($page-1)*2;
 			$indDar=$indDep+2;
 			if(empty($tab))
 			{
-				echo "<h4>Rien à afficher</h4>";
+			?>
+				<h4>Rien à afficher</h4>
+			<?php
 			}
 			else
 			{
-				echo "<table style='width:96%;margin-left:2%;'>";
-				echo"<tr><th>Nom</th><th>Prénom</th><th>Score</th></th>";
+			?>
+				<table class="table">
+					<caption> </caption>
+				<tr><th scope="col">Nom</th><th scope="col">Prénom</th><th scope="col">Score</th></th>
+			<?php
 				for($i=$indDep;$i<$indDar;$i++)
 				{
 			        if(array_key_exists( intval($i) ,$tab))
 			        {
-						echo "<tr><td style=' text-transform: uppercase;'>".$tab[$i]['lastname']."</td><td style=' text-transform: capitalize;'>".$tab[$i]['firstname']."</td><td>".$tab[$i]['score']."pts</td></tr>";
+				?>
+							<tr><td style=' text-transform: uppercase;'><?=$tab[$i]['lastname']?></td><td style=' text-transform: capitalize;'><?=$tab[$i]['firstname']?></td><td><?=$tab[$i]['score']?>pts</td><td> <span onclick="removeUser(<?=$tab[$i]['id']?>)">&#x274C;</span> &nbsp;&nbsp;&nbsp;
+						<?php
+						if($tab[$i]['statut']=="on"){echo "<span onclick='changeStatut(".$tab[$i]['id'].");'>&#128272;</span>";}else{ echo "<span onclick='changeStatut(".$tab[$i]['id'].");'>&#128275;</span>";}
+						?>
+							</td></tr>
+						<?php
 					}
 				}
-				echo "</table>";
+				?>
+					</table>
+				<?php
 			}
 		}
 		 
@@ -93,8 +158,10 @@
 			{
 			    $nbPage=ceil(count($tab)/5);
 			    $indDep=($page-1)*5;
-			    $indDar=$indDep+5;
-			    echo "<div class='ol'>";
+				$indDar=$indDep+5;
+				?>
+			   		<div class='ol'>
+				<?php
 				$number=1;
 			    for($i=$indDep;$i<$indDar;$i++)
 			    {
@@ -102,67 +169,109 @@
 			        {
 						$q=$tab[$i];
 						$urep=$q["breponses"];
-			            echo "<b class='sm_font13 mg_2'> ".($i+1).". ".$q['question']." </b>";
-			            if($q['type']=="cm")
+						?>
+							<div><input type="checkbox" name="check" class="mod" value="<?=$i ?>"></span>
+							<?=($i+1)?>
+							<div id="<?=$i ?>">&nbsp;&nbsp;<strong class='sm_font13 mg_2' id="qts_<?=$i ?>"><?= $q['question'] ?> </strong>
+							<input type="hidden" id="data_<?=$i?>" typeChoix="<?=$q['type']?>" score="<?=$q['score']?>" nbrRep="<?php if(isset($q['reponses'])){echo count($q['reponses']);}else{echo "1";}?>"/>
+			            	
+					   <?php
+						if($q['type']=="cm")
 			            {
-			                echo"<ul class='ul admin'>";
-							$num=1;
-			                foreach($q['reponses'] as $u)
-			                {
-								echo '<label class="c_rep sm_font"><xmp>'.$u.'</xmp>
-										<input type="checkbox" disabled  name="rep_user[]" value=""';
-										if(!empty($urep))
-										{ 
-											if(in_array($num,$urep))
-											{ 
-												echo "checked";
-											} 
-										}
-										echo '>
-										<span class="check" ></span>
-									</label>';
-
-								$num++;
-			                }
-			                echo "</ul>";
+							displayCM($i,$q,$urep);
 			            }
 			            elseif($q['type']=="cs")
 			            {
-
-			                echo"<ul>";
-							$num=1;
-			                foreach($q['reponses'] as $u)
-			                {
-								echo '<label class="c_rep sm_font"><xmp>'.$u.'</xmp>
-                                            <input type="radio" disabled name="rep_user'.$number.'[]" ';
-                                            if(!empty($urep))
-                                            { 
-                                                if(in_array($num,$urep))
-                                                { echo "checked";} 
-                                            }
-                                            echo '  >
-                                            <span class="checkmark"></span>
-										</label>';	
-								
-								$num++;
-							}
-			                echo "</ul>";
+							displayCS($i,$q,$urep,$number)
+							?>
+								</ul>
+						<?php
 			            }
 			            else
 			            {
-			                echo '<input class="iptxt w80" disabled  type="text" name="rep_user[]" value="';
-                                if(!empty($urep))
-                                { 
-                                    echo $urep[0];
-                                }
-                                echo '" required> <hr>';
+							displayCT($i,$q,$urep);
+							?>
+							
+						<?php
 						}
-                        $number++;
+						$number++;?>
+						
+						</div>
+						<?php
 			        }
 			        else
 			        {
 			        break;
 			        }
-			    }
-			    echo"</div>";
+				}
+				?>
+					</div>
+				<?php
+			}
+
+			
+			function displayCM($i,$q,$urep)
+			{
+				?>
+
+				<ul class='ul admin'>
+				<?php
+				$num=1;
+				foreach($q['reponses'] as $u)
+				{
+					?>
+						<label class="c_rep sm_font" id="rep_<?php echo $i."_".$num;?>"><?=htmlentities($u) ?>
+							<input type="checkbox" id="chk_<?php echo $i."_".$num;?>" disabled  name="rep_user[]" value=""
+							<?php
+							if(!empty($urep) && in_array($num,$urep))
+							{ 
+									echo "checked";
+							}
+							?>/>
+							<span class="check" ></span>
+						</label>
+				<?php
+					$num++;
+				}
+				?>
+					</ul>
+			<?php	
+			}
+
+			function displayCS($i,$q,$urep,$number)
+			{
+				?>
+					<ul>
+				<?php
+				$num=1;
+				foreach($q['reponses'] as $u)
+				{
+				?>
+						<label class="c_rep sm_font" id="rep_<?php echo $i."_".$num;?>"><?=htmlentities($u)?>
+								<input type="radio" disabled id="chk_<?php echo $i."_".$num;?>" name="rep_user<?=$number ?>[]" 
+								<?php
+								if(!empty($urep) && in_array($num,$urep))
+								{ 
+									 echo "checked";
+								}
+								?>
+								/>
+								<span class="checkmark"></span>
+							</label>	
+				<?php	
+					$num++;
+				}
+
+			}
+
+			function displayCT($i,$q,$urep)
+			{
+				?>
+				<input class="iptxt w80" disabled id="rep_<?=$i?>"  type="text" name="rep_user[]" value="
+				<?php if(!empty($urep))
+				 { 
+					 echo $urep[0];
+				 }?>"
+					  required> <hr>
+			<?php
 			}

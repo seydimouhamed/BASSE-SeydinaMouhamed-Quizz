@@ -35,6 +35,7 @@
 		}
 	}
 
+	
 
 	function register($d=array(),$f=array())
 	{
@@ -75,7 +76,7 @@
 						if(!registeruser($d["login"],$d["pwd"],$d["firstname"],$d["lastname"],$d["profil"],$f["imgUser"]))
 						{
 							echo " erreur lors de l'inscription";
-							//header("Location:index.php?action=register");
+							header("Location:index.php?action=register");
 		
 						}
 						else

@@ -11,13 +11,16 @@
                     </div>
                 <?php }?>
                 <p><?=$subtitle ?></p>
-                <a href="index.php?origin=deconnexion">
-                    <button class="ipbtn pos_abs float_r">Déconnexion</button>
-                </a>
+                <?php include('modal.php') ;?>
+                <!--"index.php?origin=deconnexion" -->
+                    <button class="ipbtn pos_abs float_r" id="myBtn" >Déconnexion</button>
+                <!--  -->
             </div>
             <?= $content_container ?>
         </div>
     </div>
+
+    <script type="text/javascript" src="./public/js/modal.js"></script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once('template.php'); ?>

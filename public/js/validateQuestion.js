@@ -5,7 +5,7 @@
        var typ = document.getElementById('type').value
        if(typ==="ct")
        {
-        document.getElementById("div_reponse").innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;</label> <input type='text' class='stlIp' onkeyup='removeErrorTxt(\"errortxt\")' error='errortxt' name='breponses[]' /></span> <br> <small id='errortxt' class='error'>test</small>";
+        document.getElementById("div_reponse").innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;</label> <input type='text' class='stlIp' onkeyup='removeErrorTxt(\"errortxt\")' error='errortxt' name='breponses[]' /></span> <br> <small id='errortxt' class='error'></small>";
        }
     }); 
     
@@ -114,10 +114,10 @@ function validate()
             //Reference a tous les checkboxs
             var chks = form.getElementsByClassName("ck");
 
-            //Poru compter le nombre de checkboxs.
-            for (var i = 0; i < chks.length; i++) 
+            //Pour compter le nombre de checkboxs.
+            for (let chk of chks) 
             { 
-                if (chks[i].checked) {
+                if (chk.checked) {
                     checked++;
                 }
             }
@@ -187,7 +187,7 @@ Functions that will be called upon, when user click on the Name text field.
 ----------------------------------------------------------------------------
 */
 
-    function generateInputs()
+document.getElementById("btn_gene").addEventListener("click",function(e)
     {
         var type=document.getElementById("type").value
         if(type==="cm" || type==="cs")
@@ -252,7 +252,7 @@ Functions that will be called upon, when user click on the Name text field.
             // appele de function de limitation des chmaps   
               disabledBtn();
         }
-    }
+    });
 
 
     function genRepNumb()

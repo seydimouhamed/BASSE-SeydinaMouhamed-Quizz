@@ -1,10 +1,12 @@
+<link rel="stylesheet" type="text/css" href="public/css/styleBreadcrumb.css">
+        
 <div class="contain_pl">
         
         <div class="div_head">
             <span>
-                <form action="" method="POST">
+                <form action="index.php?origin=admin" method="POST">
                     Nbr de question/jeu
-                    <input type="number" name="nbrQJ" value="5"/>
+                    <input type="number" name="nbrQJ" min="5" value="<?=$nbrQJ ?>"/>
                     <input type="submit" name="rnbrQuestion" value="OK"/>
                 </form>
             </span>
@@ -45,3 +47,4 @@
             ?>
     </div>
 </div>
+<script type="text/javascript" src="./public/js/updateQuestion.js"></script>

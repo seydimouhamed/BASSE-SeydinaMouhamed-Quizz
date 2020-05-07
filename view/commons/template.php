@@ -16,7 +16,7 @@
         <div class="transparent">
         <header>
             <nav>
-                <div class="logo"><img class="img_h100" alt='logo' src="public/images/logo-QuizzSA.png"></div>
+                <div class="logo"></div>
                 <div class="titre">Le plaisir de jouer</div>
             </nav>
             <?php

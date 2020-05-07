@@ -1,6 +1,5 @@
 <?php 
     $title = 'JOUER'; 
-    //$topScore=$_SESSION['topScore']; 
 ?>
 
 <?php ob_start(); ?>
@@ -26,12 +25,11 @@
                                                     foreach($rep as $u)
                                                     {
                                             ?>
-                                                    <label class="c_rep"><xmp><?= $u ?></xmp>
+                                                    <label class="c_rep"><code><?= $u ?></code>
                                                                 <input type="radio" class="ck" name="rep_user[]" value="<?=$num ?>"
-                                                            <?php if(!empty($urep))
+                                                            <?php if(!empty($urep) && in_array($num,$urep))
                                                                 { 
-                                                                    if(in_array($num,$urep))
-                                                                    { echo "checked";} 
+                                                                        echo "checked";
                                                                 }?>
                                                                 />
                                                                 <span class="checkmark"></span>
@@ -48,12 +46,9 @@
                                                     {
                                                     echo '<label class="c_rep"><xmp>'.$u.'</xmp>
                                                                 <input type="checkbox" class="ck" name="rep_user[]" value="'.$num.'"';
-                                                                if(!empty($urep))
+                                                                if(!empty($urep) && in_array($num,$urep))
                                                                 { 
-                                                                    if(in_array($num,$urep))
-                                                                    { 
                                                                         echo "checked";
-                                                                    } 
                                                                 }
                                                                 echo '>
                                                                 <span class="check"></span>
