@@ -8,6 +8,11 @@
 {
     font-family: 'Open Sans', sans-serif;
 }
+.lab_nom,.lab_prenom
+{
+    color:white;
+    font-weight: bold;
+}
 .test
 {
     font: outline;

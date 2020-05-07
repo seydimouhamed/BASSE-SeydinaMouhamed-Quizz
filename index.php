@@ -4,9 +4,7 @@ require_once('controller/front.php');
 
 $ac="action";
 
-// if(isset($_POST['updateUser']))
-// {
-// }
+
 
 if ( isset($_GET['origin'])) 
 {
@@ -46,9 +44,12 @@ if ( isset($_GET['origin']))
         }
         else
         {
+            $type=$_SESSION['userInfo']['type'];
             if($o=='admin')
-            {
-                require_once('controller/admin.php');
+            { 
+                if($type=="admin")
+                {
+                    require_once('controller/admin.php');
                     if(isset($_GET[$ac]))
                     {
                         $a=$_GET[$ac];
@@ -83,23 +84,36 @@ if ( isset($_GET['origin']))
                     {
                         adminPage();
                     }
-            }
-            if($o=="player")
-            {
-                require_once('controller/player.php');
-                $a=isset($_GET[$ac])?$_GET[$ac]:"pl";
-                if($a=="finjeu")
-                {
-                    finjeu();
                 }
                 else
                 {
-                    $data =array();
-                    if(!empty($_POST))
+                    header("location:index.php?origin=player");
+                }
+            }
+            if($o=="player")
+            {
+                if($type=="user")
+                {
+                    require_once('controller/player.php');
+                    $a=isset($_GET[$ac])?$_GET[$ac]:"pl";
+                    if($a=="finjeu")
                     {
-                        $data=$_POST;
+                        finjeu();
                     }
-                    play($data);
+                    else
+                    {
+                        $data =array();
+                        if(!empty($_POST))
+                        {
+                            $data=$_POST;
+                        }
+                        play($data);
+                    }
+                }
+                else
+                {
+                 
+                    header("location:index.php?origin=admin");   
                 }
                 
             }

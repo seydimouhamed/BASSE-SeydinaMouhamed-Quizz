@@ -63,7 +63,7 @@
                                                     { 
                                                         echo $urep[0];
                                                     }
-                                                    echo '" required>';
+                                                    echo '" >';
                                                 }
                                             ?>
                                         </div>

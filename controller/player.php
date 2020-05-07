@@ -16,14 +16,13 @@
 		    {
 		        $p=$d['cp'];
 		        $ind=$d['cp']-1;
-		        //$_SESSION['jeu'][$ind]['currep']=$d['rep_user'];
-		        saveUserResponse($ind,$d['rep_user']);
+		        @saveUserResponse($ind,$d['rep_user']);
 		            if(isset($d['prec']))
-		            {echo"on est la";
+		            {
 		                $cp=($p-1);
 		            }
 		            elseif(isset($d['suiv']))
-		            {echo"on est la suiv";
+		            {
 		                $cp=($p+1);
 		            }
 		            elseif(isset($d['term']))
@@ -57,10 +56,10 @@
 		$newScore=3;
 		$subtitle=$GLOBALS['subtitle'];	
 		require('view/player/finjeu.php');
-
-			if($newScore>$userInfo['score'])
+			if($newScore > $userInfo['score'])
 			{
 				$id=$userInfo['id'];
 				setNewScore($id,$newScore);
+				
 			}
  	}

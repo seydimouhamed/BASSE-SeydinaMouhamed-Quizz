@@ -4,14 +4,15 @@
         
         <div class="div_head">
             <span>
-                <form action="index.php?origin=admin" method="POST">
+                <form id="form-number" onsubmit="return isNumbervalide()" action="index.php?origin=admin" method="POST">
                     Nbr de question/jeu
-                    <input type="number" name="nbrQJ" min="5" value="<?=$nbrQJ ?>"/>
+                    <input type="text"id="nombre" class="inNumber" name="nbrQJ"  value="<?=$nbrQJ ?>"/>
                     <input type="submit" name="rnbrQuestion" value="OK"/>
                 </form>
             </span>
         </div>
-        <p><br></p>
+            <span id="error_number"><br></span>
+        <br><br>
         <div class="contain_sub">
 
             <?php			
@@ -47,4 +48,5 @@
             ?>
     </div>
 </div>
+<script type="text/javascript" src="./public/js/validateNumber.js"></script>
 <script type="text/javascript" src="./public/js/updateQuestion.js"></script>

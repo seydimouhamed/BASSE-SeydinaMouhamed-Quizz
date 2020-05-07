@@ -3,6 +3,20 @@
 <link rel="stylesheet" type="text/css" href="public/css/homeplayer.css">
 <link rel="stylesheet" type="text/css" href="public/css/styleCheck.css">
 <style type="text/css">
+        .sc_lab
+        {
+        padding: 10px;
+        background-color: thistle;
+        border:2px dotted red;
+        }
+        .sc_label
+        {
+        color: royalblue;
+        }
+        .votre_sc
+        {
+            border-left:5px solid red;
+        }
         .onglet
         {
                 display:inline-block;
@@ -115,15 +129,32 @@
             clear: both;
 
         }
-        .spn_score
+        .spn_score.num0
+        {
+            border-bottom: 4px solid orange;
+        }
+        .spn_score.num1
+        {
+            border-bottom: 4px solid magenta;
+        }
+        .spn_score.num2
+        {
+            border-bottom: 4px solid lime;
+        
+        }
+        .spn_score.num3
         {
             border-bottom: 4px solid red;
+        }
+        .spn_score .num4
+        {
+            border-bottom: 4px solid purple;
         }
 
         </style>   
 
 <div class="body_box">
-    <div class="box_menu">
+    <div class="box_menu">         
         <div class="systeme_onglets">
             <div class="onglets">
                 <span class="onglet_0 onglet" id="onglet_quoi" onclick="javascript:change_onglet('quoi');"><small>Top scores</small></span>
@@ -135,10 +166,10 @@
                     <?php 
                         $fn="firstname";
                         $ln="lastname";
-                        foreach ($topScore as  $k) {
+                        foreach ($topScore as $i => $k) {
                     ?>
                         <div class="div_ss_score">
-                            <h3>  <span class="float_l"><?php if($k[$fn]==$userInfo[$fn] && $k[$ln]==$userInfo[$ln]){ echo "Vous";}else{ echo $k['firstname'] ; ?>&nbsp;&nbsp;<?php echo $k['lastname'];}?> </span><span class="float_r spn_score"><?= $k['score']." "?>pts</span> </h3>
+                            <h3>  <span class="float_l"><?php if($k[$fn]==$userInfo[$fn] && $k[$ln]==$userInfo[$ln]){ echo "<b class='votre_sc'>Vous</b>";}else{ echo $k['firstname'] ; ?>&nbsp;&nbsp;<?php echo $k['lastname'];}?> </span><span class="float_r spn_score num<?=$i?>"><?= $k['score']." "?>pts</span> </h3>
                         </div>
                     <?php }?>
                 </div>
@@ -149,7 +180,13 @@
                 </div>
             </div>
         </div>
+        <?php if( $_GET['action']=='finjeu'){?>                    
+        &nbsp; &nbsp;<a href="index.php?origin=player&action=pl"><button class="ipbtn " >Rejouer </button></a> 
+        <?php }else {?>                    
+        &nbsp; &nbsp;<a href="index.php?origin=player&action=finjeu"><button class="ipbtn " >Quitter la partie</button></a>
+        <?php }?>
     </div>
+        
     <div class="rotate_question">
  
         <?= $content_jeu ?>

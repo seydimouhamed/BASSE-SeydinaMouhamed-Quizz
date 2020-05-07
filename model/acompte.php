@@ -145,23 +145,24 @@
                 $c=getData();
                 if(array_key_exists($i,$c))
                 {
-                    $c[$i]['score']=$score;
+                    $c[$i]['score']=""+$score;
                 }
-
-                return setData($c);
+               return setData($c);
             }
 //----------------------------------------------------------------------------------------------------------------
 
 	function getUserByUserName($un)
 	{
-		$c=getData();
-		foreach ($c as $val) 
+        $c=getData();
+        $i=0;
+		foreach ($c as $i => $val) 
 		{
 			if($val['login']==$un)
 			{
+                $val['id']=$i;
                return $val;
 			}
-			
+			$i++;
 		}
 
 		return "";

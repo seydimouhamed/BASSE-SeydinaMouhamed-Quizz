@@ -7,9 +7,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     </head>
         <script type="text/javascript">
-            function connexion_validate()
-            {
-                var login=document.getElementById("couleur").value;
+
+     window.onload = function() {
+            setTimeout(function(){ 
+                    document.getElementById("alert").style.display='none';
+                }, 3000);
             }
         </script>
     <body>
@@ -26,8 +28,8 @@
                     $msg=$_SESSION['msg'];
                     $_SESSION['msg']=array();
             ?>
-                    <div class="msg <?= $msg['type']?>">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <div id="alert" class="msg <?= $msg['type']?>">
+                        <span class="closebtn"  onclick="this.parentElement.style.display='none';">&times;</span> 
                         <strong><?= $msg['type']?></strong> <?= $msg['text']?>
                     </div>
             <?php 

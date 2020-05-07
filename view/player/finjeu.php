@@ -24,10 +24,9 @@
                                 {
                                     echo '<label class="c_rep"><xmp>'.$u.'</xmp>
                                             <input type="radio" disabled name="rep_user'.$number.'[]" value="'.$num.'"';
-                                            if(!empty($urep))
+                                            if(!empty($urep) || in_array($num,$urep))
                                             { 
-                                                if(in_array($num,$urep))
-                                                { echo "checked";} 
+                                                 echo "checked"; 
                                             }
                                             echo '  >
                                             <span class="checkmark"></span>
@@ -44,12 +43,9 @@
                                 {
                                     echo '<label class="c_rep"><xmp>'.$u.'</xmp>
                                             <input type="checkbox" disabled  name="rep_user[]" value="'.$num.'"';
-                                            if(!empty($urep))
-                                            { 
-                                                if(in_array($num,$urep))
-                                                { 
-                                                    echo "checked";
-                                                } 
+                                            if(!empty($urep) || in_array($num,$urep))
+                                            {  
+                                                echo "checked"; 
                                             }
                                             echo '>
                                             <span class="check" ></span>
@@ -80,9 +76,18 @@
                         }
                         $newScore=$score;
                        
-                       echo "<h1>vous avez $score / $scoreT pts</h1>"; 
+                       echo "<h1 class='sc_lab'>vous avez <i class='sc_label'> $score / $scoreT pts</i></h1>"; 
                         
                         ?>
+                    <script>
+                        window.onload = function() 
+                        {
+                            setTimeout(function(){ 
+                                location.reload();
+                }, 2000);
+            }
+                        }
+                    </script>
 
 <?php $content_jeu = ob_get_clean(); ?>
 

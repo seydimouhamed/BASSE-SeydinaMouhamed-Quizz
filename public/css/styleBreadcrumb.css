@@ -17,3 +17,11 @@
   margin-bottom: 5px;
   word-wrap: normal;
 }
+
+.inNumber
+{
+ width: 70px;
+ height: 40px;
+ border-radius: 0px;
+ border: 1px solid gray;
+}
