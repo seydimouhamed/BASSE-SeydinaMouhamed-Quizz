@@ -170,7 +170,7 @@
 						$q=$tab[$i];
 						$urep=$q["breponses"];
 						?>
-							<div><input type="checkbox" name="check" class="mod" value="<?=$i ?>"></span>
+							<div><input type="checkbox" name="check" class="mod" id="q_check_<?=$i ?>" value="<?=$i ?>"></span>
 							<?=($i+1)?>
 							<div id="<?=$i ?>">&nbsp;&nbsp;<strong class='sm_font13 mg_2' id="qts_<?=$i ?>"><?= $q['question'] ?> </strong>
 							<input type="hidden" id="data_<?=$i?>" typeChoix="<?=$q['type']?>" score="<?=$q['score']?>" nbrRep="<?php if(isset($q['reponses'])){echo count($q['reponses']);}else{echo "1";}?>"/>

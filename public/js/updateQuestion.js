@@ -411,6 +411,7 @@ function validate()
 
 function replaceAfterChange(id,data)
 {
+    document.getElementById("q_check_"+id).checked=false ;
     let dataObj=JSON.parse(data)
     var d=document.getElementById(id);
     d.innerHTML="";
