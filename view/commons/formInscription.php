@@ -28,7 +28,11 @@ if(isset($_SESSION["form"]) && !empty($_SESSION["form"]) )
                         <small for="lastname">Confirm password</small><small id="pwd_ctxt" class="input_alert float_r"></small>
                         <div class="div_input_1 "><input class="iptxt_1 ippwd_1" type="password" id="pwd_c" name="confirmpwd" /></div>
                         <div class="div_input_1 "><label class="float_f">Avatar</label><label class="file float_r"  for="imgUser">choisir un fichier<input class="fileBtn_1 float_r" error="error_f" type="file" onchange="prevUpload()" name="imgUser" id="imgUser" accept="image/png, image/jpeg"/></label></div>
-                        <div class="div_input_1"><button class="ipbtn_1" type="submit" name="inscription" >Créer compte</button>&nbsp;&nbsp;&nbsp;<a href="index.php" class="a"><small>Se connecter</small></a></div>
+                        <div class="div_input_1"><button class="ipbtn_1" type="submit" name="inscription" >Créer compte</button>&nbsp;&nbsp;&nbsp;
+                        <?php if($_GET['origin']!=='admin'){ ?>
+                            <a href="index.php" class="a"><small>Se connecter</small></a>
+                        <?php } ?>
+                        </div>
                     </form>
 
             <script>
@@ -73,7 +77,14 @@ if(isset($_SESSION["form"]) && !empty($_SESSION["form"]) )
                             var idDivError = input.getAttribute("error");
                             if(!input.value)
                             {
-                                document.getElementById(idDivError).innerText='ce champ est obligatoitre';
+                                if(input.type==='file')
+                                {
+                                    document.getElementById(idDivError).innerText='choisir une photo';
+                                }
+                                else
+                                {
+                                    document.getElementById(idDivError).innerText='ce champ est obligatoitre';
+                                }
                                 error=true;
                             }
                         }
@@ -98,6 +109,7 @@ if(isset($_SESSION["form"]) && !empty($_SESSION["form"]) )
 
                 function prevUpload()
                 {
+                    document.getElementById('error_f').innerText="";
                     var file = document.getElementById("imgUser").files[0];
                     var reader = new FileReader();
                     if (file) {
