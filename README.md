@@ -1,6 +1,7 @@
 # BASSE-SeydinaMouhamed-Quizz
-# Titre du projet
+# QUIZZ
 #Auteur 
+Seydina Mouhamed BASSE
 #Résumé
 #installation
 #lien GitHub du projet
