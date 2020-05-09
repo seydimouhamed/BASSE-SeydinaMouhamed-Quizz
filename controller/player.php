@@ -53,7 +53,8 @@
 		$userInfo=$_SESSION['userInfo'];
 		$tabT=$_SESSION['jeu'];
 		$topScore=$GLOBALS['topScore'];
-		$newScore=3;
+		$newScore=0;
+		$question_trouve=array();
 		$subtitle=$GLOBALS['subtitle'];	
 		require('view/player/finjeu.php');
 			if($newScore > $userInfo['score'])
@@ -62,4 +63,11 @@
 				setNewScore($id,$newScore);
 				
 			}
+			if(!empty($question_trouve))
+			{
+				var_dump($question_trouve);
+				$id=$userInfo['id'];
+				registerQuestionRepondu($id,$question_trouve);	
+			}
+			
  	}

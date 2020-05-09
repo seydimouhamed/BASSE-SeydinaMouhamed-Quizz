@@ -138,7 +138,19 @@
          }
 
 
+         function registerQuestionRepondu($i,$qr)
+         {
+            $c=getData();
+            if(array_key_exists($i,$c))
+            {
+                foreach($qr as $val)
+                {
+                    $c[$i]['question_repondu'][]=$val;
+                }
+            }
+           return setData($c);
 
+         }
 
             function setNewScore($i,$score)
             {

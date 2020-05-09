@@ -23,7 +23,8 @@
 			$db="db/questions.json";
 			$q_json = file_get_contents($db);
 			$data=json_decode($q_json,true);
-
+			//mettre un id a la question
+			$qts['id']=count($data)+1;
 			//ajouter la nouvelle question
 			$data[]=$qts;
 			$jsonData=json_encode($data);
@@ -61,10 +62,18 @@
 		}
 	    function newGame()
 	    {
-	    	$dq=getDataQuestion();
-			shuffle($dq);
+			$dq=getDataQuestion();
+			$dj=array();
+			foreach($dq as $q => $v)
+			{
+				if(!in_array($v['id'],$_SESSION['userInfo']['question_repondu']))
+				{
+					$dj[]=$v;
+				}
+			}
+			shuffle($dj);
 			$nbr=getNbrQPJ();
-	    	$dj=array_slice($dq,0,$nbr);
+	    	$dj=array_slice($dj,0,$nbr);
 	    	$_SESSION['jeu']=$dj;
 	    }
 

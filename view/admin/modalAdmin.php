@@ -5,7 +5,6 @@
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
-      <!--<span class="close1 cl">&times;</span>-->
       <p class="big_font" id="id_title">Changer Statut Joueur</p>
     </div>
     <div class="modal-body">

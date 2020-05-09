@@ -50,6 +50,7 @@
         "currep": []
     },
     {
+        "id": "3",
         "question": "Quelle version de PHP a introduit Try\/catch Exception",
         "score": "7",
         "type": "cs",
@@ -83,6 +84,7 @@
         "currep": []
     },
     {
+        "id": "5",
         "question": "Parmi les propositions suivantes, laquelle est la meilleure fa\u00e7on pour definir une fonction en PHP",
         "score": "20",
         "type": "cs",
@@ -99,6 +101,7 @@
         "rmq": "Une fonction est un morceau de code qui prend une entr\u00e9e sous forme d\u2019un param\u00e8tre, effectue un traitement et renvoie une valeur"
     },
     {
+        "id": "6",
         "question": "Une fonction en PHP qui commence par __ (double trait de soulignement) est connue sous le nom d\u2019une__",
         "score": "20",
         "type": "cs",
@@ -115,6 +118,7 @@
         "rmq": "Les fonctions PHP commen\u00e7ant par un double trait de soulignement \u00ab__\u00bb \u2013 sont appel\u00e9es des fonctions magiques. Ce sont des fonctions qui sont toujours d\u00e9finies dans des classes et ne sont pas des fonctions autonomes. Exemple : __set(), __get(), __sleep, __wakeup, etc. Ne les confondez pas avec les constants magiques"
     },
     {
+        "id": "7",
         "question": "Lequel des fonctions suivants est valide",
         "score": "25",
         "type": "cs",
@@ -131,6 +135,7 @@
         "rmq": "Sauf D les autres sont des noms invalides. Selon l\u2019expression r\u00e9guli\u00e8re sp\u00e9cifi\u00e9e ([a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*), un nom de fonction comme celui-ci est valide."
     },
     {
+        "id": "8",
         "question": "HTML est consid\u00e9r\u00e9 comme___",
         "score": "15",
         "type": "cm",
@@ -148,6 +153,7 @@
         "rmq": "Les langages de balisage sont les langages du Web. Ces langages de balisage incluent HTML, XML et XHTML."
     },
     {
+        "id": "9",
         "question": "Quelle fonction \u00ab count \u00bb renvoie un tableau compos\u00e9 de paires cl\u00e9\/valeur",
         "score": "15",
         "type": "cs",
@@ -174,6 +180,7 @@
         "currep": []
     },
     {
+        "id": "11",
         "question": "Si nous souhaitons d\u00e9finir le style d\u2019un seule \u00e9l\u00e9ment, quel s\u00e9lecteur css utiliserons-nous__",
         "score": "10",
         "type": "ct",
@@ -185,6 +192,7 @@
         "rmq": "L\u2019attribut id peut \u00eatre appliqu\u00e9 \u00e0 n\u2019importe quel \u00e9l\u00e9ment HTML. La valeur de cet attribut est l\u2019identifiant unique de l\u2019\u00e9l\u00e9ment"
     },
     {
+        "id": "12",
         "question": "La balise HTML qui sp\u00e9cifie un style CSS int\u00e9gr\u00e9 dans un \u00e9l\u00e9ment est appel\u00e9e___",
         "score": "15",
         "type": "ct",
@@ -196,6 +204,7 @@
         "rmq": "L\u2019attribut style sp\u00e9cifie un style inline pour un \u00e9l\u00e9ment"
     },
     {
+        "id": "13",
         "question": "Les balises pour rendre le texte en gras",
         "score": "10",
         "type": "cm",
@@ -213,6 +222,7 @@
         "rmq": "NEANT"
     },
     {
+        "id": "14",
         "question": "HTML est un sous-ensemble de___",
         "score": "20",
         "type": "ct",
@@ -224,6 +234,7 @@
         "rmq": "SGML (Standard Generalized Markup Language) est un standard sur la mani\u00e8re de sp\u00e9cifier un langage de balisage ou un ensemble de balises"
     },
     {
+        "id": "15",
         "question": "les r\u00e9gions du S\u00e9n\u00e9gal?",
         "score": "7",
         "type": "cm",
@@ -240,6 +251,7 @@
         "currep": []
     },
     {
+        "id": "16",
         "question": "le presidents du S\u00e9n\u00e9gal?",
         "score": "7",
         "type": "cs",
@@ -264,6 +276,7 @@
         "currep": []
     },
     {
+        "id": "18",
         "question": "les pays limitrophes du s\u00e9n\u00e9gal?",
         "score": "7",
         "type": "cm",
@@ -280,6 +293,7 @@
         "currep": []
     },
     {
+        "id": "19",
         "question": "les payes limitrophes du senegals??",
         "score": "7",
         "type": "cm",
@@ -296,6 +310,7 @@
         "currep": []
     },
     {
+        "id": "20",
         "question": "les pays les plus peupl\u00e9s",
         "score": "8",
         "type": "cm",
@@ -312,6 +327,7 @@
         "currep": []
     },
     {
+        "id": "21",
         "question": "le nom officiel du corona virus origine de la pand\u00e9mie?",
         "score": "10",
         "type": "ct",

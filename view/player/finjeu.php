@@ -12,6 +12,7 @@
                         $typ=$tabuq['type'];
                         $urep=$tabuq['currep'];
                         $scq=$tabuq['score'];
+                        $id=$tabuq['id'];
                         $breponses=$tabuq['breponses'];
                         $scoreT=$scoreT+$scq;
                         echo '<a name="top"></a>';
@@ -66,6 +67,7 @@
                             if(empty(array_diff($breponses,$urep)))
                             {
                                 $score=$score+$scq;
+                                $question_trouve[]= $id;
                                 echo "<div class='markv juste'>&#10004;</div>";
                             }
                             else
