@@ -26,4 +26,4 @@ Pure HTML5
 Please make sure to update tests as appropriate.
 
 ## Lien d'herbégement 
-[SMB-Quizz](smb.alwaysdata.net/index.php)
+[SMB-Quizz](http://smb.alwaysdata.net/index.php)
