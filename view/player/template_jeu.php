@@ -151,6 +151,24 @@
             border-bottom: 4px solid purple;
         }
 
+        #returntop
+        {
+                color:#51bfd0;
+                position: fixed;
+                bottom: 25px;
+                float: right;
+                right: 18.5%;
+                left: 77.25%;
+                border:1px dotted red;
+                background-color: thistle;
+                width:50px;
+                height:50px;
+                text-align:center;
+                border-radius: 50%;
+                font-size:30px;
+
+        }
+
         </style>   
 
 <div class="body_box">
@@ -180,7 +198,7 @@
                 </div>
             </div>
         </div>
-        <?php if( $_GET['action']=='finjeu'){?>                    
+        <?php if(isset($_GET['action']) && $_GET['action']=='finjeu'){?>                    
         &nbsp; &nbsp;<a href="index.php?origin=player&action=pl"><button class="ipbtn " >Rejouer </button></a> 
         <?php }else {?>                    
         &nbsp; &nbsp;<a href="index.php?origin=player&action=finjeu"><button class="ipbtn " >Quitter la partie</button></a>

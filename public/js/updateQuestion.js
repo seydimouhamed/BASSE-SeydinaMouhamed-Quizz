@@ -111,7 +111,6 @@ function initiateForm(id)
                btnRem.textContent="."
                 btnRem.setAttribute("class","btn_remove")
                 btnRem.setAttribute('id','rv_'+id+'_'+i)
-                //div_reponse_id
                 btnRem.setAttribute("onclick", "removeElement('div_reponse"+id+"','id_"+id+"_"+i+"')");
                 if(inArray(i+1,qcm[5]))
                 {
@@ -129,17 +128,16 @@ function initiateForm(id)
     {
         let repIn=document.createElement("input");
         repIn.setAttribute('type','text')
+        repIn.setAttribute('name','breponses[]')
         repIn.value=qcm[4]
         div_reponse.appendChild(repIn)
     }
 
-    //creaction du bouton submit 
     var btnSbmit=document.createElement('button');
         btnSbmit.setAttribute('type','submit');
         btnSbmit.name="updateQuestion";
         btnSbmit.value="ok";
         btnSbmit.textContent="Changer";
-    //    btnSbmit.setAttribute('onclick',"testPass()");
         
     form.appendChild(div_reponse);
     form.appendChild(btnSbmit)
@@ -168,7 +166,6 @@ function retrieveDataQ(id)
                   brep.push(i);
               }
         }
-       // document.getElementById(id).innerText=reponses+" "+brep;
     }
     else
     {
@@ -179,7 +176,6 @@ function retrieveDataQ(id)
 
     qcm.push(id,qtn,sc,ty,reponses,brep);
 
-    //document.getElementById(id).innerText=qcm[4][0]
     return qcm;
 }
 
@@ -198,7 +194,6 @@ function addChamp(idtarget,id)
 {
 
     var type=document.getElementById(idtarget+"Select").value
-   // alert(" ok"+type)
     if(type==="cm" || type==="cs")
     {
         
@@ -259,10 +254,6 @@ function addChamp(idtarget,id)
             r.setAttribute("id", "id_" + id+"_"+i);
         document.getElementById(idtarget).appendChild(r);
 
-        //appéle la function de génération de labels reponse 
-       // genRepNumb();
-        // appele de function de limitation des chmaps   
-       // disabledBtn();
     }
 }
 
@@ -297,10 +288,6 @@ function removeElement(parentDiv, childDiv){
     	var child = document.getElementById(childDiv);
     	var parent = document.getElementById(parentDiv);
         parent.removeChild(child);
-        // //appéle la function de génération de labels reponse 
-        //     genRepNumb();
-        // //appele de function qui limite les champs en desactivant le bouton
-        //     disabledBtn()
     }
     else
     {
@@ -324,12 +311,12 @@ function selectChange(id)
     var typ = document.getElementById(id+"Select").value
     if(typ==="ct")
     {
-     document.getElementById(id).innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;</label> <input type='text' class='stlIp' onkeyup='removeErrorTxt(\"errortxt\")' error='errortxt' name='breponses[]' /></span> <br> <small id='errortxt' class='error'></small>";
+     document.getElementById(id).innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;</label> <input type='text' class='stlIp' onkeyup='removeErrorTxt(\"errortxt\")' error='errortxt' name='breponses[]' required /></span> <br> <small id='errortxt' class='error'></small>";
     }
 }
 /*
 ---------------------------------------------
-fonction quand l'élément sélectionné change
+fonction quand l'élément sélectionné change FIN
 ---------------------------------------------
 */
 
@@ -390,37 +377,18 @@ function validate()
     return true;
 }
 
-// function testPass() {
-//     var username = "user-name";
-//     var passwrd = "motpasse";
-//     var creds = "uname="+username+"&passwd="+passwrd;
-//     var ajx = new XMLHttpRequest();
-//     ajx.onreadystatechagne = function () {
-//         if (ajx.readyState == 4 && ajx.status == 200) {
-//             document.getElementById("message").innerHTML = ajx.responseText;
-//         }
-//     };
-//     ajx.open("POST", "index.php?origin=test", true);
-//     ajx.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     ajx.send(creds);
-
-//     return false;
-//     //document.getElementById("message").innerHTML = creds;
-// }
-
 
 function replaceAfterChange(id,data)
 {
     document.getElementById("q_check_"+id).checked=false ;
     let dataObj=JSON.parse(data)
     var d=document.getElementById(id);
-    d.innerHTML="";
-    d.innerHTML+='	<input type="hidden" id="data_'+id+'" typeChoix="'+dataObj['type']+'" score="'+dataObj['score']+'" nbrRep="'+dataObj['reponses'].length+'"/>'
-            +'&nbsp;&nbsp;<strong class="sm_font13 mg_2" id="qts_'+id+'">'+ dataObj['question'] +'</strong>';
     let type=dataObj['type'];
-   
+    d.innerHTML="";
     if(type=="cm")
     {
+        d.innerHTML+='	<input type="hidden" id="data_'+id+'" typeChoix="'+dataObj['type']+'" score="'+dataObj['score']+'" nbrRep="'+dataObj['reponses'].length+'"/>'
+                +'&nbsp;&nbsp;<strong class="sm_font13 mg_2" id="qts_'+id+'">'+ dataObj['question'] +'</strong>';
         for(let i=0;i< dataObj['reponses'].length;i++)
         {
             let rep=dataObj['reponses'][i];
@@ -437,6 +405,8 @@ function replaceAfterChange(id,data)
         }
     }else if(type=="cs")
     {
+        d.innerHTML+='	<input type="hidden" id="data_'+id+'" typeChoix="'+dataObj['type']+'" score="'+dataObj['score']+'" nbrRep="'+dataObj['reponses'].length+'"/>'
+                +'&nbsp;&nbsp;<strong class="sm_font13 mg_2" id="qts_'+id+'">'+ dataObj['question'] +'</strong>';
         for(let i=0;i< dataObj['reponses'].length;i++)
         {
             let rep=dataObj['reponses'][i];
@@ -454,12 +424,9 @@ function replaceAfterChange(id,data)
     }
     else
     {
+        d.innerHTML+='	<input type="hidden" id="data_'+id+'" typeChoix="'+dataObj['type']+'" score="'+dataObj['score']+'" nbrRep="1"/>'
+                +'&nbsp;&nbsp;<strong class="sm_font13 mg_2" id="qts_'+id+'">'+ dataObj['question'] +'</strong>';
         d.innerHTML +='<input class="iptxt w80" disabled id="rep_<?=$i?>"  type="text" name="rep_user[]" value="'+dataObj['breponses'][0]+'"/>'
         
     }
-}
-
-function createCM()
-{
-
 }

@@ -40,7 +40,7 @@
                 <a href='index.php?origin=admin&action=listQuestion&p=<?=$pp?>' class='ipbtn float_l'>Précédent</a>
             <?php
             }
-            if($ps<$nbP){
+            if($ps<=$nbP){
             ?>
                 <a href='index.php?origin=admin&action=listQuestion&p=<?=$ps?>' class='ipbtn float_r'>Suivant</a>           
             <?php

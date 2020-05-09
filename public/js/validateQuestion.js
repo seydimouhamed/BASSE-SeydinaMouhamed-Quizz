@@ -6,7 +6,8 @@
        if(typ==="ct")
        {
         document.getElementById("div_reponse").innerHTML="<span class='al_c'><label>Reponse &nbsp; &nbsp;</label> <input type='text' class='stlIp' onkeyup='removeErrorTxt(\"errortxt\")' error='errortxt' name='breponses[]' /></span> <br> <small id='errortxt' class='error'></small>";
-       }
+        }
+        removeErCk()
     }); 
     
     

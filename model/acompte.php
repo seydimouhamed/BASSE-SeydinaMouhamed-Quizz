@@ -238,7 +238,7 @@ function registeruser($log,$pwd,$fn,$ln,$pfl,$f_imguser)
 			$c=getData();          
             $avatar=registerUserAvatar($f_imguser);
 
-            $userDetInfo=array("login"=>$log,"pwd"=>$pwd,"firstname"=>$fn,"lastname"=>$ln,"avatar"=>$avatar,"score"=>0,"type"=>$pfl);
+            $userDetInfo=array("login"=>$log,"pwd"=>$pwd,"firstname"=>$fn,"lastname"=>$ln,"avatar"=>$avatar,"score"=>0,"type"=>$pfl,"statut"=>"on");
             $c[]=$userDetInfo;
             $jsonData=json_encode($c);
 

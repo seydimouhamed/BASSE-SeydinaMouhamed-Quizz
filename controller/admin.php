@@ -61,14 +61,21 @@
 				$index=1;
 				foreach ($post as $key => $p) 
 				{
-					if(strpos($key, "reponse")!== FALSE && $p!="")
+					if(strpos($key, "reponse")!== FALSE)
 					{
-						$reponses[]=$p;
-						// l'enleve le bouton submit il ne me restera que les données
-						unset($post[$key]);
-						if(in_array(substr($key, 8), $_POST['check']))
+						if($p!="")
 						{
-							$breponses[]="$index";
+							$reponses[]=$p;
+							// l'enleve le bouton submit il ne me restera que les données
+							unset($post[$key]);
+							if(in_array(substr($key, 8), $_POST['check']))
+							{
+								$breponses[]="$index";
+							}
+						}
+						else
+						{
+							unset($post[$key]);
 						}
 						$index++;
 					}
@@ -267,11 +274,6 @@
 			function displayCT($i,$q,$urep)
 			{
 				?>
-				<input class="iptxt w80" disabled id="rep_<?=$i?>"  type="text" name="rep_user[]" value="
-				<?php if(!empty($urep))
-				 { 
-					 echo $urep[0];
-				 }?>"
-					  required> <hr>
+				<input class="iptxt w80" disabled id="rep_<?=$i?>"  type="text" name="rep_user[]" value="<?=@$urep[0]?>" required> <hr>
 			<?php
 			}

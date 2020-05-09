@@ -14,6 +14,7 @@
                         $scq=$tabuq['score'];
                         $breponses=$tabuq['breponses'];
                         $scoreT=$scoreT+$scq;
+                        echo '<a name="top"></a>';
                         echo "<div class='head_q'><h4>$number.".$tabuq["question"]."</h4></div>";
                         echo"<div class='cq_q'>";
                             if($typ=="cs")
@@ -24,7 +25,7 @@
                                 {
                                     echo '<label class="c_rep"><xmp>'.$u.'</xmp>
                                             <input type="radio" disabled name="rep_user'.$number.'[]" value="'.$num.'"';
-                                            if(!empty($urep) || in_array($num,$urep))
+                                            if(!empty($urep) && in_array($num,$urep))
                                             { 
                                                  echo "checked"; 
                                             }
@@ -43,7 +44,7 @@
                                 {
                                     echo '<label class="c_rep"><xmp>'.$u.'</xmp>
                                             <input type="checkbox" disabled  name="rep_user[]" value="'.$num.'"';
-                                            if(!empty($urep) || in_array($num,$urep))
+                                            if(!empty($urep) && in_array($num,$urep))
                                             {  
                                                 echo "checked"; 
                                             }
@@ -76,18 +77,9 @@
                         }
                         $newScore=$score;
                        
-                       echo "<h1 class='sc_lab'>vous avez <i class='sc_label'> $score / $scoreT pts</i></h1>"; 
-                        
+                       echo "<br><br><h1 class='sc_lab'>vous avez <i class='sc_label'> $score / $scoreT pts</i></h1><br>"; 
+                        echo '<a href="#top" id="returntop">&#8648;</a>';
                         ?>
-                    <script>
-                        window.onload = function() 
-                        {
-                            setTimeout(function(){ 
-                                location.reload();
-                }, 2000);
-            }
-                        }
-                    </script>
 
 <?php $content_jeu = ob_get_clean(); ?>
 
