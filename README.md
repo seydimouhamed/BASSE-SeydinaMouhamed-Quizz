@@ -14,8 +14,7 @@ le mettre dans le repertoire www
 ## Usage
 
 ```python
-login admin:admin2
-mot de passe:passer
+
 ```
 
 ## Languages utilisés
