@@ -144,6 +144,8 @@
 		{
 			if(changeData($change['toChange']))
 			{
+				$userInfo = getUserByUserName($login);
+				$_SESSION['userInfo']=$userInfo;
 				redirecte();
 			
 			}

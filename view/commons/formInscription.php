@@ -45,7 +45,21 @@ if(isset($_SESSION["form"]) && !empty($_SESSION["form"]) )
                         if(e.target.hasAttribute("error"))
                         {
                             var idDivError=e.target.getAttribute("error");
-                            document.getElementById(idDivError).innerText="";
+                            if(e.target.getAttribute("type")=="password")
+                            {
+                                if(e.target.value.length < 5)
+                                {
+                                    document.getElementById(idDivError).innerText="Doit contenir au moins 5 caracteres";
+                                }
+                                else
+                                {
+                                    document.getElementById(idDivError).innerText="";
+                                }
+                            }
+                            else
+                            {
+                                document.getElementById(idDivError).innerText="";
+                            }
                         }
                     })
                 }
@@ -75,7 +89,7 @@ if(isset($_SESSION["form"]) && !empty($_SESSION["form"]) )
                         if(input.hasAttribute("error"))
                         {
                             var idDivError = input.getAttribute("error");
-                            if(!input.value)
+                            if(!input.value.trim())
                             {
                                 if(input.type==='file')
                                 {
@@ -97,6 +111,7 @@ if(isset($_SESSION["form"]) && !empty($_SESSION["form"]) )
                     errorpwd=false;
                     if(pwd!==pwd_c || pwd.length<5)
                     {
+                        document.getElementById('error_4').innerText="le mot de passe doit avoir au moins 5 caracteres";
                         errorpwd=true;
                     }
                     

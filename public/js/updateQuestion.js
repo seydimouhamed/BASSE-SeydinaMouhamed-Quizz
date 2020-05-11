@@ -15,6 +15,23 @@ for(let c of checks)
     });
 }
 
+function updateListener()
+{
+    var checks=document.getElementsByClassName('mod')
+    for(let c of checks)
+    {
+        c.addEventListener("click",function(e){
+            let idf=c.value;
+            if(e.target.checked==true)
+            {
+                initiateForm(idf)
+            }else
+            {
+                initialState(idf);
+            }
+        });
+    }
+}
 
 function initialState(id)
 {
@@ -332,23 +349,45 @@ function sendData(id,idForm)
     //var form=document.getElementById(idForm);
     var elements = document.getElementById(idForm).elements;
     var data ="id="+id+"&";
-    for(var i = 0 ; i < elements.length ; i++){
+    var error=false;
+    var comptCk=0;
+    var comptRep=0;
+    let type= elements.namedItem("type").value;
+    for(var i = 0 ; i < elements.length ; i++)
+    {
         var item = elements.item(i);
+         
          if(item.type=="checkbox" || item.type=="radio")
          {
+             
             if(item.checked)
             {
                 data +=[item.name]+"="+ item.value;
+                comptCk++;
             }
          }
          else
          {
             data +=[item.name]+"="+ item.value; 
+            if(item.getAttribute('cp')=="cp" && item.value.trim())
+            {
+                
+                comptRep++;
+            }
          }
 
         if((i+1)!=elements.length )
         {
             data+="&";
+        }
+    }
+// validation 
+    if(type=='cm' || type=='cs')
+    {
+        if(comptRep<2 || comptCk<1)
+        {
+            document.getElementById('error_glob_'+id).innerText="Veuillez compléter le formulaire";
+            return false;
         }
     }
 
@@ -359,6 +398,7 @@ function sendData(id,idForm)
         if (ajx.readyState == 4 && ajx.status == 200) {
             let data = ajx.responseText;
             replaceAfterChange(id,data);
+            document.getElementById('error_glob_'+id).innerText="";
             //document.getElementById(idForm).innerHTML = ajx.responseText;
         }
     };
