@@ -15,6 +15,18 @@
          
     }
 
+   function getKeyCurrentUser()
+    {
+        $users=getData();
+		$log=$_SESSION['userInfo']['login'];
+		foreach($users as $key => $u)
+		{
+			if($u['login']==$log)
+			{
+                return $key;
+			}
+		}
+    }
      function getPlayers()
      {
         $tab=getData();
@@ -44,6 +56,48 @@
 
 	}	
 
+    function checkChangeNames($fn, $ln, $lg)
+    {
+        $c=getData();
+        $log=$_SESSION['userInfo']['login'];
+        $change=[];
+        $toChange=[];
+        $noToChnage=[];
+		foreach($c as $key => $u)
+		{
+			if($u['login']==$log)
+			{
+                $u['firstname']==$fn ? $noToChnage['firstname']=$fn:$toChange['firstname']=$fn;
+                $u['lastname']==$ln ? $noToChnage['lastname']=$ln:$toChange['lastname']=$ln;
+                $u['login']==$lg ? $noToChnage['login']=$lg:$toChange['login']=$lg;     
+
+                $change['toChange']=$toChange;
+                $change['noToChange']=$noToChnage;
+
+                return $change;
+			}
+		}
+        
+
+    }
+
+    function changeData($d)
+    {
+        $users=getData();
+		$log=$_SESSION['userInfo']['login'];
+		foreach($users as $key => $u)
+		{
+			if($u['login']==$log)
+			{
+                foreach($d as $k => $u)
+                {
+                    $users[$key][$k]=$u;
+                }
+			}
+        }
+        
+       return setData($users);
+    }
 
 	function checkUserNameExist($un)
 	{
@@ -250,7 +304,7 @@ function registeruser($log,$pwd,$fn,$ln,$pfl,$f_imguser)
 			$c=getData();          
             $avatar=registerUserAvatar($f_imguser);
 
-            $userDetInfo=array("login"=>$log,"pwd"=>$pwd,"firstname"=>$fn,"lastname"=>$ln,"avatar"=>$avatar,"score"=>0,"type"=>$pfl,"statut"=>"on");
+            $userDetInfo=array("login"=>$log,"pwd"=>$pwd,"firstname"=>$fn,"lastname"=>$ln,"avatar"=>$avatar,"score"=>0,"type"=>$pfl,"statut"=>"on","question_repondu"=>[]);
             $c[]=$userDetInfo;
             $jsonData=json_encode($c);
 

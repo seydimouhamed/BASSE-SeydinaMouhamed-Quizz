@@ -27,7 +27,7 @@ if(isset($_SESSION["form"]) && !empty($_SESSION["form"]) )
                         <div class="div_input_1 "><input class="iptxt_1 ippwd_1"  error="error_4" id="pwd"  type="password" name="pwd" /></div>
                         <small for="lastname">Confirm password</small><small id="pwd_ctxt" class="input_alert float_r"></small>
                         <div class="div_input_1 "><input class="iptxt_1 ippwd_1" type="password" id="pwd_c" name="confirmpwd" /></div>
-                        <div class="div_input_1 "><label class="float_f">Avatar</label><label class="file float_r"  for="imgUser">choisir un fichier<input class="fileBtn_1 float_r" error="error_f" type="file" onchange="prevUpload()" name="imgUser" id="imgUser" accept="image/png, image/jpeg"/></label></div>
+                        <div class="div_input_1 "><label class="float_f">Avatar</label><label class="file float_r"  for="imgUser">choisir une image<input class="fileBtn_1 float_r" error="error_f" type="file" onchange="prevUpload()" name="imgUser" id="imgUser" accept="image/png, image/jpeg"/></label></div>
                         <div class="div_input_1"><button class="ipbtn_1" type="submit" name="inscription" >Créer compte</button>&nbsp;&nbsp;&nbsp;
                         <?php if($_GET['origin']!=='admin'){ ?>
                             <a href="index.php" class="a"><small>Se connecter</small></a>
@@ -92,8 +92,8 @@ if(isset($_SESSION["form"]) && !empty($_SESSION["form"]) )
                     }
 
                     
-                    var pwd=document.getElementById("pwd").value;
-                    var pwd_c=document.getElementById("pwd_c").value;
+                    var pwd=document.getElementById("pwd").value.trim();
+                    var pwd_c=document.getElementById("pwd_c").value.trim();
                     errorpwd=false;
                     if(pwd!==pwd_c || pwd.length<5)
                     {

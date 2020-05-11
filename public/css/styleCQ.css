@@ -97,7 +97,7 @@ label
 }
 .div_type select
 {
-    width: 73%;
+    width: 67%;
 
     float: left;
     height: 100%;
@@ -183,7 +183,7 @@ hr
     border-radius: 0px;
     border: none;
     background-color: #f8f9fa;
-    box-shadow: 1px 1px aqua; 
+    box-shadow: 1px 1px #3bc9db; 
 }
 
 .div_reponse

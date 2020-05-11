@@ -11,8 +11,10 @@
                 </div>
                 <div class="float_l ">
                     <br><br>
-                    <div>&nbsp;&nbsp;&nbsp;<label class="lab_prenom "><?= $userInfo['firstname'];?></label></div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="lab_nom"><?=$userInfo['lastname'];?></label></div>
+                    <a href="index.php?origin=admin&action=profilAdmin">
+                        <div>&nbsp;&nbsp;&nbsp;<label class="lab_prenom "><?= $userInfo['firstname'];?></label></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="lab_nom"><?=$userInfo['lastname'];?></label></div>
+                    </a>
                 </div>
             </div>
             <div class="div_menu"> 

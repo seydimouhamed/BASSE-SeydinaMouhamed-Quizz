@@ -40,8 +40,9 @@
                         if(input.hasAttribute("error"))
                         {
                             var idDivError = input.getAttribute("error");
-                            if(!input.value)
+                            if(!input.value.trim())
                             {
+                                input.value="";
                                 document.getElementById(idDivError).innerText='ce champ est obligatoitre';
                                 error=true;
                             }

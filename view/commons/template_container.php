@@ -7,7 +7,9 @@
                             <img class="w_70_h_70 img_avatar" alt="av" src="public/imageUsers/<?php if(isset($userInfo['avatar'])){echo $userInfo['avatar'];}else{ echo "default.jpg";}?>"/>
                     </div>
                     <div class="name_user">
+                    <a href="index.php?origin=player&action=profil">
                         <?='  '.$userInfo['firstname'].' '.$userInfo['lastname']?>
+                    </a>
                     </div>
                 <?php }?>
                 <p><?=$subtitle ?></p>

@@ -100,6 +100,10 @@ if ( isset($_GET['origin']))
                     {
                         finjeu();
                     }
+                    elseif($a=="profil")
+                    {
+                        profil();
+                    }
                     else
                     {
                         $data =array();
@@ -116,6 +120,10 @@ if ( isset($_GET['origin']))
                     header("location:index.php?origin=admin");   
                 }
                 
+            }
+            elseif($o=="changeProfil")
+            {
+                changeProfil($_POST);
             }
         }
     }

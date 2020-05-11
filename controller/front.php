@@ -39,6 +39,8 @@
 
 	function register($d=array(),$f=array())
 	{
+
+		array_walk($d, 'trim_value');
 		if(empty($d))
 		{
 			require("view/player/inscriptionPlayer.php");
@@ -116,3 +118,52 @@
 		}
 
 	}
+
+	function changeProfil($p)
+	{
+		array_walk($p, 'trim_value');
+		extract($p);
+		$change=checkChangeNames($firstname,$lastname,$login);
+
+		$msg=[];
+		if(array_key_exists('login',$change['toChange']) && checkUserNameExist($login))
+		{
+			$msg[]=array('type'=>'alert','text'=>'Le nom d\'utilisateur existe déja!');
+			
+			unset($change['toChange']['login']);
+
+		}
+		if(empty($change['toChange']))
+		{
+			$msg[]=array('type'=>'info','text'=>'aucun changement n\'a été effectué!');
+			
+			$_SESSION['msg']=$msg;
+			redirecte();
+		}
+		else
+		{
+			if(changeData($change['toChange']))
+			{
+				redirecte();
+			
+			}
+		}
+	}
+
+	function trim_value(&$value)
+	{
+		$value = trim($value);
+	}
+
+function redirecte()
+{
+
+	if($_SESSION['userInfo']['type']=="admin")
+	{
+		header('location:index.php?origin=admin&action=profilAdmin');
+	}
+	else
+	{
+		header('location:index.php?origin=player&action=profil');
+	}
+}

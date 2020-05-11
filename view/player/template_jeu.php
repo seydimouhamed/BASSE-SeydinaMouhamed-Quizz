@@ -198,10 +198,10 @@
                 </div>
             </div>
         </div>
-        <?php if(isset($_GET['action']) && $_GET['action']=='finjeu'){?>                    
-        &nbsp; &nbsp;<a href="index.php?origin=player&action=pl"><button class="ipbtn " >Rejouer </button></a> 
+        <?php if(isset($_GET['action']) && $_GET['action']!=='pl'){?>                    
+        &nbsp; &nbsp;<a href="index.php?origin=player&action=pl"><button class="ipbtn " >Rejouer</button></a> 
         <?php }else {?>                    
-        &nbsp; &nbsp;<a href="index.php?origin=player&action=finjeu"><button class="ipbtn " >Quitter la partie</button></a>
+        &nbsp; &nbsp;<a href="index.php?origin=player&action=finjeu"><button class="ipbtn " >Quitter la partie </button></a>
         <?php }?>
     </div>
         
@@ -226,37 +226,37 @@
     }
 
 
-    function validate() 
-    {
-        var form = document.getElementById("form");
-        var typ = document.getElementsByName('typ')[0].value;
-        if(typ==="ct")
-        {
-            return true;
-        }
-        var checked = 0;
+    // function validate() 
+    // {
+    //     var form = document.getElementById("form");
+    //     var typ = document.getElementsByName('typ')[0].value;
+    //     if(typ==="ct")
+    //     {
+    //         return true;
+    //     }
+    //     var checked = 0;
 
-        //Reference all the CheckBoxes in Table.
-        var chks = form.getElementsByClassName("ck");
+    //     //Reference all the CheckBoxes in Table.
+    //     var chks = form.getElementsByClassName("ck");
 
-        //Loop and count the number of checked CheckBoxes.
-        for (var i = 0; i < chks.length; i++) 
-        {
-            if (chks[i].checked) 
-            {
-                checked++;
-            }
-        }
+    //     //Loop and count the number of checked CheckBoxes.
+    //     for (var i = 0; i < chks.length; i++) 
+    //     {
+    //         if (chks[i].checked) 
+    //         {
+    //             checked++;
+    //         }
+    //     }
 
-        if (checked > 0 ) 
-        {
-            return true;
-        } 
-        else 
-        {
-            return false;
-        }
-    }
+    //     if (checked > 0 ) 
+    //     {
+    //         return true;
+    //     } 
+    //     else 
+    //     {
+    //         return false;
+    //     }
+    // }
 </script>
 <?php $content_container = ob_get_clean(); ?>
 

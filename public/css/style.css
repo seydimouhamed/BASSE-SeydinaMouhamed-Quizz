@@ -43,6 +43,11 @@ body
     background-color: #6cf436;
 
 }
+.msg.info
+{
+    background-color: rgb(54, 174, 244);
+
+}
 
 .closebtn {
     margin-left: 15px;

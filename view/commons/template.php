@@ -27,12 +27,15 @@
                 {
                     $msg=$_SESSION['msg'];
                     $_SESSION['msg']=array();
+                    foreach($msg as $m)
+                    {
             ?>
-                    <div id="alert" class="msg <?= $msg['type']?>">
+                    <div id="alert" class="msg <?= $m['type']?>">
                         <span class="closebtn"  onclick="this.parentElement.style.display='none';">&times;</span> 
-                        <strong><?= $msg['type']?></strong> <?= $msg['text']?>
+                        <strong><?= $m['type']?></strong> <?= $m['text']?>
                     </div>
             <?php 
+                    }
                 }
              ?>
         </header>
