@@ -1,0 +1,27 @@
+.stlIp
+{
+    width: 60%; 
+}
+.stlIp, .div_type select, .div_question textarea,.div_score input
+{
+    border-radius: 0px;
+    border: none;
+    background-color: #f8f9fa;
+    box-shadow: 1px 1px aqua; 
+}
+
+.inQuestion
+{
+  width: 50;
+  height: 100px;
+  margin-bottom: 5px;
+  word-wrap: normal;
+}
+
+.inNumber
+{
+ width: 70px;
+ height: 40px;
+ border-radius: 0px;
+ border: 1px solid gray;
+}

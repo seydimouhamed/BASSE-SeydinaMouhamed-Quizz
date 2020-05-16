@@ -1,0 +1,58 @@
+
+
+/* dans la page admin*/
+.admin .c_rep .check:after {
+    left: 2px;
+    top: 2px;
+    width: 2px;
+    height: 2px;
+  }
+
+
+.check, .checkmark {
+    width: 10px;
+    height: 10px;
+  }
+
+  
+  .c_rep .checkmark:after {
+    top: 2.5px;
+   left: 2.5px;
+   width: 5px;
+   height: 5px;
+}
+
+.sm_font
+{
+    font-size: 10px;
+}
+
+.sm_font13
+{
+    font-size: 13px;
+    color:gray;
+}
+
+.ol
+{
+    overflow: scroll;
+    height: 100%;
+}
+
+.mg_2,ul,.c_rep
+{
+    margin:0px;
+}
+
+.w80
+{
+    width: 60%;
+    margin-left: 20%;
+    height: 15px;
+    clear: both;
+}
+hr
+{
+    width: 100%;
+    visibility: hidden;
+}
